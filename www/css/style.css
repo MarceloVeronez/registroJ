@@ -1,0 +1,112 @@
+.login-custom {
+  width: 100%;
+  margin: 0;
+  background-color: #000;
+  background-image: url(../img/login-img.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.login-label{
+  width: 75%;
+  margin: auto;
+  margin-top: 100px;
+}
+.menu-list{
+   width: 100%;
+  margin: auto;
+  margin-top: 100px;
+}
+.item {
+  background: none;
+  border:none;
+}
+/* Linha abaixo aonde preenche*/
+.item-input {
+  border-bottom: 1px solid #fff;
+}
+
+/* Icones do Login */
+.item-input i {
+  color: #000000;
+  font-size: 30px;
+}
+
+/* Cor quando Digita */
+.item-input input {
+  font-size: 16px;
+  margin-left: 10px;
+  color: #000000;
+}
+
+.item-button {
+  padding: 30;
+  color: #fff;
+}
+/* Texto principal */
+.login-custom h1 {
+  font-family: 'Merriweather';
+  color: #fff;
+  text-align: center;
+  font-size: 50px;
+  padding-top: 20px;
+  margin-top: 20%;
+}
+.login-custom h1 span {
+  font-family: 'Roboto';
+  font-size: 18px;
+  position: absolute;
+  margin-top: 55px;
+  margin-left: -35px;
+}
+
+.button-first {
+  padding-top: 20px;
+}
+.button.button-positive {
+  background-color: #FFFF00;
+}
+.button-clear.button-clear {
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+  text-decoration: underline;
+}
+/* edição titulo */
+.title {
+  font-family: 'Merriweather';
+  text-align: center;
+  font-size: 14px !important;
+}
+
+/*Efeito em botao*/
+.textoBotao{
+  font-family: 'Merriweather';
+  text-align: center;
+  font-size: 20px;
+}
+
+.auto{
+  font-family: 'Merriweather';
+}
+
+.divcadastro h1{
+  font-family: 'Roboto';
+    margin-top: 15px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    font-size: 200px;
+}
+
+.card h1{
+  font-weight;
+}
+
+.colunas{
+  margin-top: 15px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  font-size: 200px;
+}
+/* Empty. Add your own CSS if you like */
