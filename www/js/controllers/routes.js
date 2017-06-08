@@ -32,5 +32,14 @@ angular.module('starter')
       }
     })
 
+.state('menu.mapa',{
+      url:'/mapa',
+      views :{
+        'menuConteudo' : {
+          templateUrl: 'templates/mapa.html'
+        }
+      }
+    })
+
     $urlRouterProvider.otherwise('/login');
   })
