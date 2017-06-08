@@ -41,5 +41,6 @@ angular.module('starter')
       }
     })
 
+
     $urlRouterProvider.otherwise('/login');
   })
