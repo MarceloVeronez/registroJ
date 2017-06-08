@@ -25,15 +25,14 @@ angular.module('starter', ['ionic'])
 
 .controller('AppCtrl', function($scope, HttpService) {
 
-  $scope.insereLocal = function(){
-    HttpService.insereProdutoLocal($scope.prod);
-    alert("Inserção Local com sucesso");
- }
+  $scope.temporizador = function(){
+     setTimeout(function() { HttpService.insereMapaLocal($scope.mapas); alert("Inserção Local com sucesso"); }, 3000);
+  }
 
  //Inicio da distancia do mapa
  $scope.CalculaDistancia = function(){
 
-    console.log("chegou aqui " + $scope.txtOrigem);
+    console.log("chegou aqui " + $scope.mapas.txtOrigem);
 
      $('#litResultado').html('Aguarde...');
                 //Instanciar o DistanceMatrixService
@@ -42,9 +41,9 @@ angular.module('starter', ['ionic'])
                 service.getDistanceMatrix(
                   {
                       //Origem
-                      origins: [$scope.txtOrigem],
+                      origins: [$scope.mapas.txtOrigem],
                       //Destino
-                      destinations: [$scope.txtDestino],
+                      destinations: [$scope.mapas.txtDestino],
                       //Modo (DRIVING | WALKING | BICYCLING)
                       travelMode: google.maps.TravelMode.DRIVING,
                       //Sistema de medida (METRIC | IMPERIAL)
@@ -72,6 +71,9 @@ angular.module('starter', ['ionic'])
                         "<br /><strong>Distância</strong>: " + response.rows[0].elements[0].distance.text +
                         " <br /><strong>Duração</strong>: " + response.rows[0].elements[0].duration.text
                         );
+                    //Salvar dados de distancia e tempo em variaveis
+                    $($scope.mapas.distancia = response.rows[0].elements[0].distance.text);
+                    $($scope.mapas.tempo = response.rows[0].elements[0].duration.text);
                     //Atualizar o mapa
                     $("#map").attr("src", "https://maps.google.com/maps?saddr=" + response.originAddresses + "&daddr=" + response.destinationAddresses + "&output=embed");
                 }
@@ -81,20 +83,20 @@ angular.module('starter', ['ionic'])
 
 .service('HttpService', function($http) {
   return{
-    insereProdutoLocal: function(novo) { 
-      // guarda os produtos
-      var produtos = [ ];
+    insereMapaLocal: function(novo) { 
+      // guarda os mapas
+      var mapas = [ ];
       // verifica se a chave existe
-      if (typeof localStorage.produtos != 'undefined'){
+      if (typeof localStorage.mapas != 'undefined'){
           // recupera conteúdo da chave e transforma em JSON
-          produtos = JSON.parse(localStorage.produtos);
+          mapas = JSON.parse(localStorage.mapas);
       }
       // adiciona produto novo no vetor
-     produtos.push(novo);
+     mapas.push(novo);
      // converte JSON para String
-      var paraString = JSON.stringify(produtos);
+      var paraString = JSON.stringify(mapas);
       // armazena conteúdo do vetor em localStorate
-      localStorage.setItem('produtos', paraString);
+      localStorage.setItem('mapas', paraString);
       
       return novo;
    
