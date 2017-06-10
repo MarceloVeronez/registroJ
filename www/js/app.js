@@ -28,6 +28,8 @@ angular.module('starter', ['ionic'])
   $scope.temporizador = function(){
      setTimeout(function() { HttpService.insereMapaLocal($scope.mapas); alert("Inserção Local com sucesso"); }, 3000);
   }
+  //Funcoes para toggles
+
 
  //Inicio da distancia do mapa
  $scope.CalculaDistancia = function(){
@@ -78,11 +80,131 @@ angular.module('starter', ['ionic'])
                     $("#map").attr("src", "https://maps.google.com/maps?saddr=" + response.originAddresses + "&daddr=" + response.destinationAddresses + "&output=embed");
                 }
             }
-
+$scope.direcao = function(response, status){
+  var data = new Date();
+  var hora = data.getHours();
+  var minuto = data.getMinutes();
+  var segundo = data.getSeconds();
+  var dia = data.getDate();
+  var mes = data.getMonth()+1;
+  var ano = data.getFullYear();
+  $scope.direcao.hora = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
+  console.log($scope.direcao.hora);
+  HttpService.insereDirecaoLocal($scope.direcao.hora);
+  }
+$scope.refeicao = function(response, status){
+  var data = new Date();
+  var hora = data.getHours();
+  var minuto = data.getMinutes();
+  var segundo = data.getSeconds();
+  var dia = data.getDate();
+  var mes = data.getMonth()+1;
+  var ano = data.getFullYear();
+  $scope.refeicao.hora = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
+  console.log($scope.refeicao.hora);
+  HttpService.insereRefeicaoLocal($scope.refeicao.hora);
+  }
+$scope.descanso = function(response, status){
+  var data = new Date();
+  var hora = data.getHours();
+  var minuto = data.getMinutes();
+  var segundo = data.getSeconds();
+  var dia = data.getDate();
+  var mes = data.getMonth()+1;
+  var ano = data.getFullYear();
+  $scope.descanso.hora = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
+  console.log($scope.descanso.hora);
+  HttpService.insereDescansoLocal($scope.descanso.hora);
+  }
+$scope.carga = function(response, status){
+  var data = new Date();
+  var hora = data.getHours();
+  var minuto = data.getMinutes();
+  var segundo = data.getSeconds();
+  var dia = data.getDate();
+  var mes = data.getMonth()+1;
+  var ano = data.getFullYear();
+  $scope.carga.hora = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
+  console.log($scope.carga.hora);
+  HttpService.insereCargaLocal($scope.carga.hora);
+  }
+$scope.descarga = function(response, status){
+  var data = new Date();
+  var hora = data.getHours();
+  var minuto = data.getMinutes();
+  var segundo = data.getSeconds();
+  var dia = data.getDate();
+  var mes = data.getMonth()+1;
+  var ano = data.getFullYear();
+  $scope.descarga.hora = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
+  console.log($scope.descarga.hora);
+  HttpService.insereDescargaLocal($scope.descarga.hora);
+  }
+$scope.abastecimento = function(response, status){
+  var data = new Date();
+  var hora = data.getHours();
+  var minuto = data.getMinutes();
+  var segundo = data.getSeconds();
+  var dia = data.getDate();
+  var mes = data.getMonth()+1;
+  var ano = data.getFullYear();
+  $scope.abastecimento.hora = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
+  console.log($scope.abastecimento.hora);
+  HttpService.insereAbastecimentoLocal($scope.abastecimento.hora);
+  }
+$scope.tempoc = function(response, status){
+  var data = new Date();
+  var hora = data.getHours();
+  var minuto = data.getMinutes();
+  var segundo = data.getSeconds();
+  var dia = data.getDate();
+  var mes = data.getMonth()+1;
+  var ano = data.getFullYear();
+  $scope.tempoc.hora = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
+  console.log($scope.tempoc.hora);
+  HttpService.insereTempocLocal($scope.tempoc.hora);
+  }
+$scope.fiscalizacao = function(response, status){
+  var data = new Date();
+  var hora = data.getHours();
+  var minuto = data.getMinutes();
+  var segundo = data.getSeconds();
+  var dia = data.getDate();
+  var mes = data.getMonth()+1;
+  var ano = data.getFullYear();
+  $scope.fiscalizacao.hora = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
+  console.log($scope.fiscalizacao.hora);
+  HttpService.insereFiscalizacaoLocal($scope.fiscalizacao.hora);
+  }
+$scope.manutencao = function(response, status){
+  var data = new Date();
+  var hora = data.getHours();
+  var minuto = data.getMinutes();
+  var segundo = data.getSeconds();
+  var dia = data.getDate();
+  var mes = data.getMonth()+1;
+  var ano = data.getFullYear();
+  $scope.manutencao.hora = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
+  console.log($scope.manutencao.hora);
+  HttpService.insereManutencaoLocal($scope.manutencao.hora);
+  }
+$scope.pernoite = function(response, status){
+  var data = new Date();
+  var hora = data.getHours();
+  var minuto = data.getMinutes();
+  var segundo = data.getSeconds();
+  var dia = data.getDate();
+  var mes = data.getMonth()+1;
+  var ano = data.getFullYear();
+  $scope.pernoite.hora = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
+  console.log($scope.pernoite.hora);
+  HttpService.inserePernoiteLocal($scope.pernoite.hora);
+  }
+            
 })
 
 .service('HttpService', function($http) {
-  return{
+    return{
     insereMapaLocal: function(novo) { 
       // guarda os mapas
       var mapas = [ ];
@@ -97,9 +219,179 @@ angular.module('starter', ['ionic'])
       var paraString = JSON.stringify(mapas);
       // armazena conteúdo do vetor em localStorate
       localStorage.setItem('mapas', paraString);
-      
       return novo;
-   
+   },
+
+
+    insereDirecaoLocal: function(novo) { 
+      // guarda os mapas
+      var direcao = [ ];
+      // verifica se a chave existe
+      if (typeof localStorage.direcao != 'undefined'){
+          // recupera conteúdo da chave e transforma em JSON
+          direcao = JSON.parse(localStorage.direcao);
+      }
+      // adiciona produto novo no vetor
+     direcao.push(novo);
+     // converte JSON para String
+      var paraString = JSON.stringify(direcao);
+      // armazena conteúdo do vetor em localStorate
+      localStorage.setItem('direcao', paraString);
+      return novo;
+   },
+
+   insereRefeicaoLocal: function(novo) { 
+      // guarda os mapas
+      var refeicao = [ ];
+      // verifica se a chave existe
+      if (typeof localStorage.refeicao != 'undefined'){
+          // recupera conteúdo da chave e transforma em JSON
+          refeicao = JSON.parse(localStorage.refeicao);
+      }
+      // adiciona produto novo no vetor
+     refeicao.push(novo);
+     // converte JSON para String
+      var paraString = JSON.stringify(refeicao);
+      // armazena conteúdo do vetor em localStorate
+      localStorage.setItem('refeicao', paraString);
+      return novo;
+   },
+
+   insereDescansoLocal: function(novo) { 
+      // guarda os mapas
+      var descanso = [ ];
+      // verifica se a chave existe
+      if (typeof localStorage.descanso != 'undefined'){
+          // recupera conteúdo da chave e transforma em JSON
+          descanso = JSON.parse(localStorage.descanso);
+      }
+      // adiciona produto novo no vetor
+     descanso.push(novo);
+     // converte JSON para String
+      var paraString = JSON.stringify(descanso);
+      // armazena conteúdo do vetor em localStorate
+      localStorage.setItem('descanso', paraString);
+      return novo;
+   },
+
+   insereCargaLocal: function(novo) { 
+      // guarda os mapas
+      var carga = [ ];
+      // verifica se a chave existe
+      if (typeof localStorage.carga != 'undefined'){
+          // recupera conteúdo da chave e transforma em JSON
+          carga = JSON.parse(localStorage.carga);
+      }
+      // adiciona produto novo no vetor
+     carga.push(novo);
+     // converte JSON para String
+      var paraString = JSON.stringify(carga);
+      // armazena conteúdo do vetor em localStorate
+      localStorage.setItem('carga', paraString);
+      return novo;
+   },
+
+   insereDescargaLocal: function(novo) { 
+      // guarda os mapas
+      var descarga = [ ];
+      // verifica se a chave existe
+      if (typeof localStorage.descarga != 'undefined'){
+          // recupera conteúdo da chave e transforma em JSON
+          descarga = JSON.parse(localStorage.descarga);
+      }
+      // adiciona produto novo no vetor
+     descarga.push(novo);
+     // converte JSON para String
+      var paraString = JSON.stringify(descarga);
+      // armazena conteúdo do vetor em localStorate
+      localStorage.setItem('descarga', paraString);
+      return novo;
+   },
+
+   insereAbastecimentoLocal: function(novo) { 
+      // guarda os mapas
+      var abastecimento = [ ];
+      // verifica se a chave existe
+      if (typeof localStorage.abastecimento != 'undefined'){
+          // recupera conteúdo da chave e transforma em JSON
+          abastecimento = JSON.parse(localStorage.abastecimento);
+      }
+      // adiciona produto novo no vetor
+     abastecimento.push(novo);
+     // converte JSON para String
+      var paraString = JSON.stringify(abastecimento);
+      // armazena conteúdo do vetor em localStorate
+      localStorage.setItem('abastecimento', paraString);
+      return novo;
+   },
+
+   insereTempocLocal: function(novo) { 
+      // guarda os mapas
+      var tempoc = [ ];
+      // verifica se a chave existe
+      if (typeof localStorage.tempoc != 'undefined'){
+          // recupera conteúdo da chave e transforma em JSON
+          tempoc = JSON.parse(localStorage.tempoc);
+      }
+      // adiciona produto novo no vetor
+     tempoc.push(novo);
+     // converte JSON para String
+      var paraString = JSON.stringify(tempoc);
+      // armazena conteúdo do vetor em localStorate
+      localStorage.setItem('tempoc', paraString);
+      return novo;
+   },
+
+   insereFiscalizacaoLocal: function(novo) { 
+      // guarda os mapas
+      var fiscalizacao = [ ];
+      // verifica se a chave existe
+      if (typeof localStorage.fiscalizacao != 'undefined'){
+          // recupera conteúdo da chave e transforma em JSON
+          fiscalizacao = JSON.parse(localStorage.fiscalizacao);
+      }
+      // adiciona produto novo no vetor
+     fiscalizacao.push(novo);
+     // converte JSON para String
+      var paraString = JSON.stringify(fiscalizacao);
+      // armazena conteúdo do vetor em localStorate
+      localStorage.setItem('fiscalizacao', paraString);
+      return novo;
+   },
+
+   insereManutencaoLocal: function(novo) { 
+      // guarda os mapas
+      var manutencao = [ ];
+      // verifica se a chave existe
+      if (typeof localStorage.manutencao != 'undefined'){
+          // recupera conteúdo da chave e transforma em JSON
+          manutencao = JSON.parse(localStorage.manutencao);
+      }
+      // adiciona produto novo no vetor
+     manutencao.push(novo);
+     // converte JSON para String
+      var paraString = JSON.stringify(manutencao);
+      // armazena conteúdo do vetor em localStorate
+      localStorage.setItem('manutencao', paraString);
+      return novo;
+   },
+
+   inserePernoiteLocal: function(novo) { 
+      // guarda os mapas
+      var pernoite = [ ];
+      // verifica se a chave existe
+      if (typeof localStorage.pernoite != 'undefined'){
+          // recupera conteúdo da chave e transforma em JSON
+          pernoite = JSON.parse(localStorage.pernoite);
+      }
+      // adiciona produto novo no vetor
+     pernoite.push(novo);
+     // converte JSON para String
+      var paraString = JSON.stringify(pernoite);
+      // armazena conteúdo do vetor em localStorate
+      localStorage.setItem('pernoite', paraString);
+      return novo;
    },
   }
-});
+
+  });

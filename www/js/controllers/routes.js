@@ -32,6 +32,15 @@ angular.module('starter')
       }
     })
 
+.state('menu.cronometro',{
+      url:'/cronometro',
+      views :{
+        'menuConteudo' : {
+          templateUrl: 'templates/cronometro.html'
+        }
+      }
+    })
+
 .state('menu.mapa',{
       url:'/mapa',
       views :{

@@ -4,110 +4,46 @@
     </ion-nav-title>
      <div>
       <ion-pane>
-      <ion-content>
+      <ion-content ng-controller="AppCtrl">
 
 
      <ul class="list">
 
    <a href="#/menu/mapa" style="text-decoration:none"><button class="button button-block button-dark" style="color:White;">Inicio Jornada</button></a>
 
-     <li class="item item-toggle">
-         Inicio / Fim Direção
-         <label class="toggle">
-             <input type="checkbox">
-             <div class="track">
-                 <div class="handle"></div>
-             </div>
-         </label>
-     </li>
+     <ion-toggle ng-click="direcao()">
+          Direção
+    </ion-toggle>
+    <ion-toggle ng-click="refeicao()">
+          Refeição
+    </ion-toggle>
+    <ion-toggle ng-click="descanso()">
+          Descanso
+    </ion-toggle>
+    <ion-toggle ng-click="carga()">
+          Carga
+    </ion-toggle>
+    <ion-toggle ng-click="descarga()">
+          Descarga
+    </ion-toggle>
+    <ion-toggle ng-click="abastecimento()">
+          Abastecimento
+    </ion-toggle>
+    <ion-toggle ng-click="tempoc()">
+          Tempo cliente
+    </ion-toggle>
+    <ion-toggle ng-click="fiscalizacao()">
+          Fiscalização
+    </ion-toggle >
+    <ion-toggle ng-click="manutencao()">
+          Manutenção
+    </ion-toggle>
+    <ion-toggle ng-click="pernoite()">
+          Pernoite
+    </ion-toggle>
 
-     <li class="item item-toggle">
-        Inicio / Fim Refeição
-         <label class="toggle">
-             <input type="checkbox">
-             <div class="track">
-                 <div class="handle"></div>
-             </div>
-         </label>
-     </li>
-
-     <li class="item item-toggle">
-         Inicio / Fim Descanço
-         <label class="toggle">
-             <input type="checkbox">
-             <div class="track">
-                 <div class="handle"></div>
-             </div>
-         </label>
-     </li>
-
-      <li class="item item-toggle">
-         Inicio / Fim Carga
-         <label class="toggle">
-             <input type="checkbox">
-             <div class="track">
-                 <div class="handle"></div>
-             </div>
-         </label>
-     </li>
-
-      <li class="item item-toggle">
-         Inicio / Fim Descarga
-         <label class="toggle">
-             <input type="checkbox">
-             <div class="track">
-                 <div class="handle"></div>
-             </div>
-         </label>
-      </li>
-      <li class="item item-toggle">
-         Inicio / Fim Abastecimento
-         <label class="toggle toggle-dark">
-             <input type="checkbox">
-             <div class="track">
-                 <div class="handle"></div>
-             </div>
-         </label>
-      </li>
-      <li class="item item-toggle">
-         Inicio / Fim Tempo Cliente
-         <label class="toggle">
-             <input type="checkbox">
-             <div class="track">
-                 <div class="handle"></div>
-             </div>
-         </label>
-      </li>
-
-      <li class="item item-toggle">
-         Inicio / Fim Fiscalização
-         <label class="toggle">
-             <input type="checkbox">
-             <div class="track">
-                 <div class="handle"></div>
-             </div>
-         </label>
-      </li>
-      <li class="item item-toggle">
-         Inicio / Fim Manutenção
-         <label class="toggle">
-             <input type="checkbox">
-             <div class="track">
-                 <div class="handle"></div>
-             </div>
-         </label>
-     </li>
-      <li class="item item-toggle">
-         Inicio / Fim Pernoite
-         <label class="toggle">
-             <input type="checkbox">
-             <div class="track">
-                 <div class="handle"></div>
-             </div>
-         </label>
-      </li>
  <button class="button button-block button-dark" style="color:white;">Finalizar Jornada</button>
-     
- </ul>
+
+
   
 </ion-view>
