@@ -5,16 +5,18 @@
      <div>
       <ion-pane>
       <ion-content ng-controller="AppCtrl">
-
-
      <ul class="list">
 
-   <a href="#/menu/mapa" style="text-decoration:none"><button class="button button-block button-dark" style="color:White;">Inicio Jornada</button></a>
+   <a href="#/menu/mapa" style="text-decoration:none">
+    <button class="button button-block button-dark" style="color:White;" ng-click="inicioJ()">
+        Inicio Jornada
+    </button>
+   </a>
 
-     <ion-toggle ng-click="direcao()">
+     <ion-toggle ng-click="direcao()" id="direcao">
           Direção
     </ion-toggle>
-    <ion-toggle ng-click="refeicao()">
+    <ion-toggle ng-click="refeicao()" id="refeicao">
           Refeição
     </ion-toggle>
     <ion-toggle ng-click="descanso()">
@@ -42,7 +44,7 @@
           Pernoite
     </ion-toggle>
 
- <button class="button button-block button-dark" style="color:white;">Finalizar Jornada</button>
+ <a href="#/menu/consulta" style="text-decoration:none"><button class="button button-block button-dark" style="color:white;">Finalizar Jornada</button></a>
 
 
   

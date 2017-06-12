@@ -32,11 +32,11 @@ angular.module('starter')
       }
     })
 
-.state('menu.cronometro',{
-      url:'/cronometro',
+.state('menu.consulta',{
+      url:'/consulta',
       views :{
         'menuConteudo' : {
-          templateUrl: 'templates/cronometro.html'
+          templateUrl: 'templates/consulta.html'
         }
       }
     })

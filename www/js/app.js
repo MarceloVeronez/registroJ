@@ -80,6 +80,19 @@ angular.module('starter', ['ionic'])
                     $("#map").attr("src", "https://maps.google.com/maps?saddr=" + response.originAddresses + "&daddr=" + response.destinationAddresses + "&output=embed");
                 }
             }
+
+$scope.inicioJ = function(response, status){
+  var data = new Date();
+  var hora = data.getHours();
+  var minuto = data.getMinutes();
+  var segundo = data.getSeconds();
+  var dia = data.getDate();
+  var mes = data.getMonth()+1;
+  var ano = data.getFullYear();
+  $scope.inicioJ.hora = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
+  console.log($scope.inicioJ.hora);
+  HttpService.insereInicioJLocal($scope.inicioJ.hora);
+  }
 $scope.direcao = function(response, status){
   var data = new Date();
   var hora = data.getHours();
@@ -200,7 +213,29 @@ $scope.pernoite = function(response, status){
   console.log($scope.pernoite.hora);
   HttpService.inserePernoiteLocal($scope.pernoite.hora);
   }
-            
+ $scope.consultaMapas = function(){
+    $scope.mapas = JSON.parse(HttpService.getMapasLocal());
+    $scope.direcao = JSON.parse(HttpService.getDirecaoLocal());
+    $scope.refeicao = JSON.parse(HttpService.getRefeicaoLocal());
+    $scope.descanso = JSON.parse(HttpService.getDescansoLocal());
+    $scope.carga = JSON.parse(HttpService.getCargaLocal());
+    $scope.descarga = JSON.parse(HttpService.getDescargaLocal());
+    $scope.abastecimento = JSON.parse(HttpService.getAbastecimentoLocal());
+    $scope.tempoc = JSON.parse(HttpService.getTempocLocal());
+    $scope.fiscalizacao = JSON.parse(HttpService.getFiscalizacaoLocal());
+    $scope.manutencao = JSON.parse(HttpService.getManutencaoLocal());
+    $scope.pernoite = JSON.parse(HttpService.getPernoiteLocal());
+    $scope.itens = [{id: 'direcao', direcao: 'Horários da direção (ínicio e fim respectivamente)'},      ];
+    $scope.itens2 = [{id: 'refeicao', refeicao: 'Horários da refeição (ínicio e fim respectivamente)'}];
+    $scope.itens3 = [{id: 'descanso', descanso: 'Horários do descanso (ínicio e fim respectivamente)'}]; 
+    $scope.itens4 = [{id: 'carga', carga: 'Horários da carga (ínicio e fim respectivamente)'}]; 
+    $scope.itens5 = [{id: 'descarga', descarga: 'Horários da descarga (ínicio e fim respectivamente)'}]; 
+    $scope.itens6 = [{id: 'abastecimento', abastecimento: 'Horários do abastecimento (ínicio e fim respectivamente)'}]; 
+    $scope.itens7 = [{id: 'tempoc', tempoc: 'Horários do tempo cliente (ínicio e fim respectivamente)'}]; 
+    $scope.itens8 = [{id: 'fiscalizacao', fiscalizacao: 'Horários da fiscalização (ínicio e fim respectivamente)'}]; 
+    $scope.itens9 = [{id: 'manutencao', manutencao: 'Horários da manutenção (ínicio e fim respectivamente)'}]; 
+    $scope.itens10 = [{id: 'pernoite', pernoite: 'Horários da pernoite (ínicio e fim respectivamente)'}];    
+ }           
 })
 
 .service('HttpService', function($http) {
@@ -222,7 +257,22 @@ $scope.pernoite = function(response, status){
       return novo;
    },
 
-
+    insereInicioJLocal: function(novo) { 
+      // guarda os mapas
+      var inicioJ = [ ];
+      // verifica se a chave existe
+      if (typeof localStorage.inicioJ != 'undefined'){
+          // recupera conteúdo da chave e transforma em JSON
+          inicioJ = JSON.parse(localStorage.Inicio);
+      }
+      // adiciona produto novo no vetor
+     inicioJ.push(novo);
+     // converte JSON para String
+      var paraString = JSON.stringify(inicioJ);
+      // armazena conteúdo do vetor em localStorate
+      localStorage.setItem('inicioJ', paraString);
+      return novo;
+   },
     insereDirecaoLocal: function(novo) { 
       // guarda os mapas
       var direcao = [ ];
@@ -392,6 +442,49 @@ $scope.pernoite = function(response, status){
       localStorage.setItem('pernoite', paraString);
       return novo;
    },
+   getMapasLocal: function() {
+     // retorna conteúdo da chave mapas  
+     return localStorage.mapas;
+   },
+   getDirecaoLocal: function() {
+    console.log(localStorage.direcao);
+     return localStorage.direcao;
+   },
+   getRefeicaoLocal: function() {
+    console.log(localStorage.refeicao);
+     return localStorage.refeicao;
+   },
+   getDescansoLocal: function() {
+    console.log(localStorage.descanso);
+     return localStorage.descanso;
+   },
+   getCargaLocal: function() {
+    console.log(localStorage.carga);
+     return localStorage.carga;
+   },
+   getDescargaLocal: function() {
+    console.log(localStorage.descarga);
+     return localStorage.descarga;
+   },
+   getAbastecimentoLocal: function() {
+    console.log(localStorage.abastecimento);
+     return localStorage.abastecimento;
+   },
+   getTempocLocal: function() {
+    console.log(localStorage.tempoc);
+     return localStorage.tempoc;
+   },
+   getFiscalizacaoLocal: function() {
+    console.log(localStorage.fiscalizacao);
+     return localStorage.fiscalizacao;
+   },
+   getManutencaoLocal: function() {
+    console.log(localStorage.manutencao);
+     return localStorage.manutencao;
+   },
+   getPernoiteLocal: function() {
+    console.log(localStorage.pernoite);
+     return localStorage.pernoite;
+   }
   }
-
   });

@@ -1,0 +1,81 @@
+<ion-view>
+  <ion-nav-title>
+    <h1 class="title" style="text-decoration:bold; text-align:center">Consulta</h1>
+    </ion-nav-title>
+    <ion-nav-bar class ="bar-dark">
+        <ion-nav-back-button class="button button-dark" style="text-decoration:none; color:white">Voltar</ion-nav-back-button>
+    </ion-nav-bar>
+     <div>
+      <ion-pane>
+      <ion-content ng-controller="AppCtrl">
+      <button class="button button-dark button-block" ng-click="consultaMapas()">Consulta</button>
+  		<ion-list>
+        <ion-item ng-repeat="mapas in mapas" class="item-text-wrap">
+          Origem: {{ mapas.txtOrigem }}<br>
+         Destino: {{ mapas.txtDestino }}<br>
+         Tempo de viagem: {{ mapas.tempo }}<br>
+         Distância percorrida: {{ mapas.distancia }}<br>
+         </ion-item>
+      <ion-item class="item-text-wrap" ng-repeat="id in itens">
+        {{id.direcao}}
+      </ion-item>
+      <ion-item ng-repeat="direcao in direcao" class="item-text-wrap">
+       {{direcao}}
+      </ion-item>
+      <ion-item class="item-text-wrap" ng-repeat="id in itens2">
+        {{id.refeicao}}
+      </ion-item>
+      <ion-item ng-repeat="refeicao in refeicao" class="item-text-wrap">
+       {{refeicao}}
+      </ion-item>
+      <ion-item class="item-text-wrap" ng-repeat="id in itens3">
+        {{id.descanso}}
+      </ion-item>
+      <ion-item ng-repeat="descanso in descanso" class="item-text-wrap">
+       {{descanso}}
+      </ion-item>
+      <ion-item class="item-text-wrap" ng-repeat="id in itens4">
+        {{id.carga}}
+      </ion-item>
+      <ion-item ng-repeat="carga in carga" class="item-text-wrap">
+       {{carga}}
+      </ion-item>
+      <ion-item class="item-text-wrap" ng-repeat="id in itens5">
+        {{id.descarga}}
+      </ion-item>
+      <ion-item ng-repeat="descarga in descarga" class="item-text-wrap">
+       {{descarga}}
+      </ion-item>
+      <ion-item class="item-text-wrap" ng-repeat="id in itens6">
+        {{id.abastecimento}}
+      </ion-item>
+      <ion-item ng-repeat="abastecimento in abastecimento" class="item-text-wrap">
+       {{abastecimento}}
+      </ion-item>
+      <ion-item class="item-text-wrap" ng-repeat="id in itens7">
+        {{id.tempoc}}
+      </ion-item>
+      <ion-item ng-repeat="tempoc in tempoc" class="item-text-wrap">
+       {{tempoc}}
+      </ion-item>
+      <ion-item class="item-text-wrap" ng-repeat="id in itens8">
+        {{id.fiscalizacao}}
+      </ion-item>
+      <ion-item ng-repeat="fiscalizacao in fiscalizacao" class="item-text-wrap">
+       {{fiscalizacao}}
+      </ion-item>
+      <ion-item class="item-text-wrap" ng-repeat="id in itens9">
+        {{id.manutencao}}
+      </ion-item>
+      <ion-item ng-repeat="manutencao in manutencao" class="item-text-wrap">
+       {{manutencao}}
+      </ion-item>
+      <ion-item class="item-text-wrap" ng-repeat="id in itens10">
+        {{id.pernoite}}
+      </ion-item>
+      <ion-item ng-repeat="pernoite in pernoite" class="item-text-wrap">
+       {{pernoite}}
+      </ion-item>
+    </ion-list>
+  
+</ion-view>
