@@ -78,34 +78,42 @@ angular.module('starter', ['ionic'])
                     $($scope.mapas.tempo = response.rows[0].elements[0].duration.text);
                     //Atualizar o mapa
                     $("#map").attr("src", "https://maps.google.com/maps?saddr=" + response.originAddresses + "&daddr=" + response.destinationAddresses + "&output=embed");
+                    //Puxar hora de inicio
+                    var data = new Date();
+                    var hora = data.getHours();
+                    var minuto = data.getMinutes();
+                    var segundo = data.getSeconds();
+                    var dia = data.getDate();
+                    var mes = data.getMonth()+1;
+                    var ano = data.getFullYear();
+                    $($scope.mapas.hora = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo);
+                    
+                    
                 }
             }
-
-$scope.inicioJ = function(response, status){
-  var data = new Date();
-  var hora = data.getHours();
-  var minuto = data.getMinutes();
-  var segundo = data.getSeconds();
-  var dia = data.getDate();
-  var mes = data.getMonth()+1;
-  var ano = data.getFullYear();
-  $scope.inicioJ.hora = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
-  console.log($scope.inicioJ.hora);
-  HttpService.insereInicioJLocal($scope.inicioJ.hora);
+  $scope.direcaoFu = function(response, status){
+  if($scope.direcao.direcaoC == true){  
+    $scope.refeicaoF = true;
+    $scope.descansoF = true;
+    $scope.cargaF = true;
+    $scope.descargaF = true;
+    $scope.abastecimentoF = true;
+    $scope.tempocF = true;
+    $scope.fiscalizacaoF = true;
+    $scope.manutencaoF = true;
+    $scope.pernoiteF = true;
   }
-$scope.direcao = function(response, status){
-  var data = new Date();
-  var hora = data.getHours();
-  var minuto = data.getMinutes();
-  var segundo = data.getSeconds();
-  var dia = data.getDate();
-  var mes = data.getMonth()+1;
-  var ano = data.getFullYear();
-  $scope.direcao.hora = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
-  console.log($scope.direcao.hora);
-  HttpService.insereDirecaoLocal($scope.direcao.hora);
+  else{
+    $scope.refeicaoF = false;
+    $scope.descansoF = false;
+    $scope.cargaF = false;
+    $scope.descargaF = false;
+    $scope.abastecimentoF = false;
+    $scope.tempocF = false;
+    $scope.fiscalizacaoF = false;
+    $scope.manutencaoF = false;
+    $scope.pernoiteF = false;
   }
-$scope.refeicao = function(response, status){
   var data = new Date();
   var hora = data.getHours();
   var minuto = data.getMinutes();
@@ -113,59 +121,37 @@ $scope.refeicao = function(response, status){
   var dia = data.getDate();
   var mes = data.getMonth()+1;
   var ano = data.getFullYear();
-  $scope.refeicao.hora = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
-  console.log($scope.refeicao.hora);
-  HttpService.insereRefeicaoLocal($scope.refeicao.hora);
+  if($scope.direcao.direcaoC == true){
+    $scope.direcao.inicio = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
   }
-$scope.descanso = function(response, status){
-  var data = new Date();
-  var hora = data.getHours();
-  var minuto = data.getMinutes();
-  var segundo = data.getSeconds();
-  var dia = data.getDate();
-  var mes = data.getMonth()+1;
-  var ano = data.getFullYear();
-  $scope.descanso.hora = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
-  console.log($scope.descanso.hora);
-  HttpService.insereDescansoLocal($scope.descanso.hora);
+  else if($scope.direcao.direcaoC == false){
+    $scope.direcao.fim = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
+    HttpService.insereDirecaoLocal($scope.direcao);
   }
-$scope.carga = function(response, status){
-  var data = new Date();
-  var hora = data.getHours();
-  var minuto = data.getMinutes();
-  var segundo = data.getSeconds();
-  var dia = data.getDate();
-  var mes = data.getMonth()+1;
-  var ano = data.getFullYear();
-  $scope.carga.hora = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
-  console.log($scope.carga.hora);
-  HttpService.insereCargaLocal($scope.carga.hora);
   }
-$scope.descarga = function(response, status){
-  var data = new Date();
-  var hora = data.getHours();
-  var minuto = data.getMinutes();
-  var segundo = data.getSeconds();
-  var dia = data.getDate();
-  var mes = data.getMonth()+1;
-  var ano = data.getFullYear();
-  $scope.descarga.hora = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
-  console.log($scope.descarga.hora);
-  HttpService.insereDescargaLocal($scope.descarga.hora);
+$scope.refeicaoFu = function(response, status){
+  if($scope.refeicao.refeicaoC == true){  
+    $scope.direcaoF = true;
+    $scope.descansoF = true;
+    $scope.cargaF = true;
+    $scope.descargaF = true;
+    $scope.abastecimentoF = true;
+    $scope.tempocF = true;
+    $scope.fiscalizacaoF = true;
+    $scope.manutencaoF = true;
+    $scope.pernoiteF = true;
   }
-$scope.abastecimento = function(response, status){
-  var data = new Date();
-  var hora = data.getHours();
-  var minuto = data.getMinutes();
-  var segundo = data.getSeconds();
-  var dia = data.getDate();
-  var mes = data.getMonth()+1;
-  var ano = data.getFullYear();
-  $scope.abastecimento.hora = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
-  console.log($scope.abastecimento.hora);
-  HttpService.insereAbastecimentoLocal($scope.abastecimento.hora);
+  else{
+    $scope.direcaoF = false;
+    $scope.descansoF = false;
+    $scope.cargaF = false;
+    $scope.descargaF = false;
+    $scope.abastecimentoF = false;
+    $scope.tempocF = false;
+    $scope.fiscalizacaoF = false;
+    $scope.manutencaoF = false;
+    $scope.pernoiteF = false;
   }
-$scope.tempoc = function(response, status){
   var data = new Date();
   var hora = data.getHours();
   var minuto = data.getMinutes();
@@ -173,35 +159,37 @@ $scope.tempoc = function(response, status){
   var dia = data.getDate();
   var mes = data.getMonth()+1;
   var ano = data.getFullYear();
-  $scope.tempoc.hora = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
-  console.log($scope.tempoc.hora);
-  HttpService.insereTempocLocal($scope.tempoc.hora);
+  if($scope.refeicao.refeicaoC == true){
+    $scope.refeicao.inicio = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
   }
-$scope.fiscalizacao = function(response, status){
-  var data = new Date();
-  var hora = data.getHours();
-  var minuto = data.getMinutes();
-  var segundo = data.getSeconds();
-  var dia = data.getDate();
-  var mes = data.getMonth()+1;
-  var ano = data.getFullYear();
-  $scope.fiscalizacao.hora = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
-  console.log($scope.fiscalizacao.hora);
-  HttpService.insereFiscalizacaoLocal($scope.fiscalizacao.hora);
+  else if($scope.refeicao.refeicaoC == false){
+    $scope.refeicao.fim = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
+    HttpService.insereRefeicaoLocal($scope.refeicao);
   }
-$scope.manutencao = function(response, status){
-  var data = new Date();
-  var hora = data.getHours();
-  var minuto = data.getMinutes();
-  var segundo = data.getSeconds();
-  var dia = data.getDate();
-  var mes = data.getMonth()+1;
-  var ano = data.getFullYear();
-  $scope.manutencao.hora = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
-  console.log($scope.manutencao.hora);
-  HttpService.insereManutencaoLocal($scope.manutencao.hora);
   }
-$scope.pernoite = function(response, status){
+$scope.descansoFu = function(response, status){
+  if($scope.descanso.descansoC == true){  
+    $scope.direcaoF = true;
+    $scope.refeicaoF = true;
+    $scope.cargaF = true;
+    $scope.descargaF = true;
+    $scope.abastecimentoF = true;
+    $scope.tempocF = true;
+    $scope.fiscalizacaoF = true;
+    $scope.manutencaoF = true;
+    $scope.pernoiteF = true;
+  }
+  else{
+    $scope.direcaoF = false;
+    $scope.refeicaoF = false;
+    $scope.cargaF = false;
+    $scope.descargaF = false;
+    $scope.abastecimentoF = false;
+    $scope.tempocF = false;
+    $scope.fiscalizacaoF = false;
+    $scope.manutencaoF = false;
+    $scope.pernoiteF = false;
+  }
   var data = new Date();
   var hora = data.getHours();
   var minuto = data.getMinutes();
@@ -209,9 +197,279 @@ $scope.pernoite = function(response, status){
   var dia = data.getDate();
   var mes = data.getMonth()+1;
   var ano = data.getFullYear();
-  $scope.pernoite.hora = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
-  console.log($scope.pernoite.hora);
-  HttpService.inserePernoiteLocal($scope.pernoite.hora);
+  if($scope.descanso.descansoC == true){
+    $scope.descanso.inicio = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
+  }
+  else if($scope.descanso.descansoC == false){
+    $scope.descanso.fim = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
+    HttpService.insereDescansoLocal($scope.descanso);
+  }
+  }
+$scope.cargaFu = function(response, status){
+  if($scope.carga.cargaC == true){  
+    $scope.direcaoF = true;
+    $scope.descansoF = true;
+    $scope.refeicaoF = true;
+    $scope.descargaF = true;
+    $scope.abastecimentoF = true;
+    $scope.tempocF = true;
+    $scope.fiscalizacaoF = true;
+    $scope.manutencaoF = true;
+    $scope.pernoiteF = true;
+  }
+  else{
+    $scope.direcaoF = false;
+    $scope.descansoF = false;
+    $scope.refeicaoF = false;
+    $scope.descargaF = false;
+    $scope.abastecimentoF = false;
+    $scope.tempocF = false;
+    $scope.fiscalizacaoF = false;
+    $scope.manutencaoF = false;
+    $scope.pernoiteF = false;
+  }
+  var data = new Date();
+  var hora = data.getHours();
+  var minuto = data.getMinutes();
+  var segundo = data.getSeconds();
+  var dia = data.getDate();
+  var mes = data.getMonth()+1;
+  var ano = data.getFullYear();
+  if($scope.carga.cargaC == true){
+    $scope.carga.inicio = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
+  }
+  else if($scope.carga.cargaC == false){
+    $scope.carga.fim = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
+    HttpService.insereCargaLocal($scope.carga);
+  }
+  }
+$scope.descargaFu = function(response, status){
+  if($scope.descarga.descargaC == true){  
+    $scope.direcaoF = true;
+    $scope.descansoF = true;
+    $scope.cargaF = true;
+    $scope.refeicaoF = true;
+    $scope.abastecimentoF = true;
+    $scope.tempocF = true;
+    $scope.fiscalizacaoF = true;
+    $scope.manutencaoF = true;
+    $scope.pernoiteF = true;
+  }
+  else{
+    $scope.direcaoF = false;
+    $scope.descansoF = false;
+    $scope.cargaF = false;
+    $scope.refeicaoF = false;
+    $scope.abastecimentoF = false;
+    $scope.tempocF = false;
+    $scope.fiscalizacaoF = false;
+    $scope.manutencaoF = false;
+    $scope.pernoiteF = false;
+  }
+  var data = new Date();
+  var hora = data.getHours();
+  var minuto = data.getMinutes();
+  var segundo = data.getSeconds();
+  var dia = data.getDate();
+  var mes = data.getMonth()+1;
+  var ano = data.getFullYear();
+  if($scope.descarga.descargaC == true){
+    $scope.descarga.inicio = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
+  }
+  else if($scope.descarga.descargaC == false){
+    $scope.descarga.fim = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
+    HttpService.insereDescargaLocal($scope.descarga);
+  }
+  }
+$scope.abastecimentoFu = function(response, status){
+  if($scope.abastecimento.abastecimentoC == true){  
+    $scope.direcaoF = true;
+    $scope.descansoF = true;
+    $scope.cargaF = true;
+    $scope.descargaF = true;
+    $scope.refeicaoF = true;
+    $scope.tempocF = true;
+    $scope.fiscalizacaoF = true;
+    $scope.manutencaoF = true;
+    $scope.pernoiteF = true;
+  }
+  else{
+    $scope.direcaoF = false;
+    $scope.descansoF = false;
+    $scope.cargaF = false;
+    $scope.descargaF = false;
+    $scope.refeicaoF = false;
+    $scope.tempocF = false;
+    $scope.fiscalizacaoF = false;
+    $scope.manutencaoF = false;
+    $scope.pernoiteF = false;
+  }
+  var data = new Date();
+  var hora = data.getHours();
+  var minuto = data.getMinutes();
+  var segundo = data.getSeconds();
+  var dia = data.getDate();
+  var mes = data.getMonth()+1;
+  var ano = data.getFullYear();
+  if($scope.abastecimento.abastecimentoC == true){
+    $scope.abastecimento.inicio = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
+  }
+  else if($scope.abastecimento.abastecimentoC == false){
+    $scope.abastecimento.fim = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
+    HttpService.insereAbastecimentoLocal($scope.abastecimento);
+  }
+  }
+$scope.tempocFu = function(response, status){
+  if($scope.tempoc.tempocC == true){  
+    $scope.direcaoF = true;
+    $scope.descansoF = true;
+    $scope.cargaF = true;
+    $scope.descargaF = true;
+    $scope.abastecimentoF = true;
+    $scope.refeicaoF = true;
+    $scope.fiscalizacaoF = true;
+    $scope.manutencaoF = true;
+    $scope.pernoiteF = true;
+  }
+  else{
+    $scope.direcaoF = false;
+    $scope.descansoF = false;
+    $scope.cargaF = false;
+    $scope.descargaF = false;
+    $scope.abastecimentoF = false;
+    $scope.refeicaoF = false;
+    $scope.fiscalizacaoF = false;
+    $scope.manutencaoF = false;
+    $scope.pernoiteF = false;
+  }
+  var data = new Date();
+  var hora = data.getHours();
+  var minuto = data.getMinutes();
+  var segundo = data.getSeconds();
+  var dia = data.getDate();
+  var mes = data.getMonth()+1;
+  var ano = data.getFullYear();
+  if($scope.tempoc.tempocC == true){
+    $scope.tempoc.inicio = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
+  }
+  else if($scope.tempoc.tempocC == false){
+    $scope.tempoc.fim = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
+    HttpService.insereTempocLocal($scope.tempoc);
+  }
+  }
+$scope.fiscalizacaoFu = function(response, status){
+  if($scope.fiscalizacao.fiscalizacaoC == true){  
+    $scope.direcaoF = true;
+    $scope.descansoF = true;
+    $scope.cargaF = true;
+    $scope.descargaF = true;
+    $scope.abastecimentoF = true;
+    $scope.tempocF = true;
+    $scope.refeicaoF = true;
+    $scope.manutencaoF = true;
+    $scope.pernoiteF = true;
+  }
+  else{
+    $scope.direcaoF = false;
+    $scope.descansoF = false;
+    $scope.cargaF = false;
+    $scope.descargaF = false;
+    $scope.abastecimentoF = false;
+    $scope.tempocF = false;
+    $scope.refeicaoF = false;
+    $scope.manutencaoF = false;
+    $scope.pernoiteF = false;
+  }
+  var data = new Date();
+  var hora = data.getHours();
+  var minuto = data.getMinutes();
+  var segundo = data.getSeconds();
+  var dia = data.getDate();
+  var mes = data.getMonth()+1;
+  var ano = data.getFullYear();
+  if($scope.fiscalizacao.fiscalizacaoC == true){
+    $scope.fiscalizacao.inicio = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
+  }
+  else{
+    $scope.fiscalizacao.fim = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
+    HttpService.insereFiscalizacaoLocal($scope.fiscalizacao);
+  }
+  }
+$scope.manutencaoFu = function(response, status){
+  if($scope.manutencao.manutencaoC == true){  
+    $scope.direcaoF = true;
+    $scope.descansoF = true;
+    $scope.cargaF = true;
+    $scope.descargaF = true;
+    $scope.abastecimentoF = true;
+    $scope.tempocF = true;
+    $scope.fiscalizacaoF = true;
+    $scope.refeicaoF = true;
+    $scope.pernoiteF = true;
+  }
+  else{
+    $scope.direcaoF = false;
+    $scope.descansoF = false;
+    $scope.cargaF = false;
+    $scope.descargaF = false;
+    $scope.abastecimentoF = false;
+    $scope.tempocF = false;
+    $scope.fiscalizacaoF = false;
+    $scope.refeicaoF = false;
+    $scope.pernoiteF = false;
+  }
+  var data = new Date();
+  var hora = data.getHours();
+  var minuto = data.getMinutes();
+  var segundo = data.getSeconds();
+  var dia = data.getDate();
+  var mes = data.getMonth()+1;
+  var ano = data.getFullYear();
+  if($scope.manutencao.manutencaoC == true){
+    $scope.manutencao.inicio = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
+  }
+  else{
+    $scope.manutencao.fim = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
+    HttpService.insereManutencaoLocal($scope.manutencao);
+  }
+  }
+$scope.pernoiteFu = function(response, status){
+  if($scope.pernoite.pernoiteC == true){  
+    $scope.direcaoF = true;
+    $scope.descansoF = true;
+    $scope.cargaF = true;
+    $scope.descargaF = true;
+    $scope.abastecimentoF = true;
+    $scope.tempocF = true;
+    $scope.fiscalizacaoF = true;
+    $scope.manutencaoF = true;
+    $scope.refeicaoF = true;
+  }
+  else{
+    $scope.direcaoF = false;
+    $scope.descansoF = false;
+    $scope.cargaF = false;
+    $scope.descargaF = false;
+    $scope.abastecimentoF = false;
+    $scope.tempocF = false;
+    $scope.fiscalizacaoF = false;
+    $scope.manutencaoF = false;
+    $scope.refeicaoF = false;
+  }
+  var data = new Date();
+  var hora = data.getHours();
+  var minuto = data.getMinutes();
+  var segundo = data.getSeconds();
+  var dia = data.getDate();
+  var mes = data.getMonth()+1;
+  var ano = data.getFullYear();
+  if($scope.pernoite.pernoiteC == true){
+    $scope.pernoite.inicio = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
+  }
+  else{
+    $scope.pernoite.fim = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
+    HttpService.inserePernoiteLocal($scope.pernoite);
+  }
   }
  $scope.consultaMapas = function(){
     $scope.mapas = JSON.parse(HttpService.getMapasLocal());
@@ -254,23 +512,6 @@ $scope.pernoite = function(response, status){
       var paraString = JSON.stringify(mapas);
       // armazena conteúdo do vetor em localStorate
       localStorage.setItem('mapas', paraString);
-      return novo;
-   },
-
-    insereInicioJLocal: function(novo) { 
-      // guarda os mapas
-      var inicioJ = [ ];
-      // verifica se a chave existe
-      if (typeof localStorage.inicioJ != 'undefined'){
-          // recupera conteúdo da chave e transforma em JSON
-          inicioJ = JSON.parse(localStorage.Inicio);
-      }
-      // adiciona produto novo no vetor
-     inicioJ.push(novo);
-     // converte JSON para String
-      var paraString = JSON.stringify(inicioJ);
-      // armazena conteúdo do vetor em localStorate
-      localStorage.setItem('inicioJ', paraString);
       return novo;
    },
     insereDirecaoLocal: function(novo) { 

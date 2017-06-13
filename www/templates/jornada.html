@@ -8,39 +8,39 @@
      <ul class="list">
 
    <a href="#/menu/mapa" style="text-decoration:none">
-    <button class="button button-block button-dark" style="color:White;" ng-click="inicioJ()">
+    <button class="button button-block button-dark" style="color:White;">
         Inicio Jornada
     </button>
    </a>
 
-     <ion-toggle ng-click="direcao()" id="direcao">
+     <ion-toggle ng-click="direcaoFu()"  ng-model="direcao.direcaoC" ng-disabled="direcaoF">
           Direção
     </ion-toggle>
-    <ion-toggle ng-click="refeicao()" id="refeicao">
+    <ion-toggle ng-click="refeicaoFu()"  ng-model="refeicao.refeicaoC" ng-disabled="refeicaoF">
           Refeição
-    </ion-toggle>
-    <ion-toggle ng-click="descanso()">
+    </ion-toggle> 
+    <ion-toggle ng-click="descansoFu()"  ng-model="descanso.descansoC" ng-disabled="descansoF">
           Descanso
     </ion-toggle>
-    <ion-toggle ng-click="carga()">
+    <ion-toggle ng-click="cargaFu()" ng-model="carga.cargaC" ng-disabled="cargaF">
           Carga
     </ion-toggle>
-    <ion-toggle ng-click="descarga()">
+    <ion-toggle ng-click="descargaFu()"  ng-model="descarga.descargaC" ng-disabled="descargaF">
           Descarga
     </ion-toggle>
-    <ion-toggle ng-click="abastecimento()">
+    <ion-toggle ng-click="abastecimentoFu()" ng-model="abastecimento.abastecimentoC" ng-disabled="abastecimentoF">
           Abastecimento
     </ion-toggle>
-    <ion-toggle ng-click="tempoc()">
+    <ion-toggle ng-click="tempocFu()" ng-model="tempoc.tempocC" ng-disabled="tempocF">
           Tempo cliente
     </ion-toggle>
-    <ion-toggle ng-click="fiscalizacao()">
+    <ion-toggle ng-click="fiscalizacaoFu()"  ng-model="fiscalizacao.fiscalizacaoC" ng-disabled="fiscalizacaoF">
           Fiscalização
     </ion-toggle >
-    <ion-toggle ng-click="manutencao()">
+    <ion-toggle ng-click="manutencaoFu()"  ng-model="manutencao.manutencaoC" ng-disabled="manutencaoF">
           Manutenção
     </ion-toggle>
-    <ion-toggle ng-click="pernoite()">
+    <ion-toggle ng-click="pernoiteFu()"  ng-model="pernoite.pernoiteC" ng-disabled="pernoiteF">
           Pernoite
     </ion-toggle>
 
