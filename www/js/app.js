@@ -483,16 +483,16 @@ $scope.pernoiteFu = function(response, status){
     $scope.fiscalizacao = JSON.parse(HttpService.getFiscalizacaoLocal());
     $scope.manutencao = JSON.parse(HttpService.getManutencaoLocal());
     $scope.pernoite = JSON.parse(HttpService.getPernoiteLocal());
-    $scope.itens = [{id: 'direcao', direcao: 'Horários da direção (ínicio e fim respectivamente)'},      ];
-    $scope.itens2 = [{id: 'refeicao', refeicao: 'Horários da refeição (ínicio e fim respectivamente)'}];
-    $scope.itens3 = [{id: 'descanso', descanso: 'Horários do descanso (ínicio e fim respectivamente)'}]; 
-    $scope.itens4 = [{id: 'carga', carga: 'Horários da carga (ínicio e fim respectivamente)'}]; 
-    $scope.itens5 = [{id: 'descarga', descarga: 'Horários da descarga (ínicio e fim respectivamente)'}]; 
-    $scope.itens6 = [{id: 'abastecimento', abastecimento: 'Horários do abastecimento (ínicio e fim respectivamente)'}]; 
-    $scope.itens7 = [{id: 'tempoc', tempoc: 'Horários do tempo cliente (ínicio e fim respectivamente)'}]; 
-    $scope.itens8 = [{id: 'fiscalizacao', fiscalizacao: 'Horários da fiscalização (ínicio e fim respectivamente)'}]; 
-    $scope.itens9 = [{id: 'manutencao', manutencao: 'Horários da manutenção (ínicio e fim respectivamente)'}]; 
-    $scope.itens10 = [{id: 'pernoite', pernoite: 'Horários da pernoite (ínicio e fim respectivamente)'}];    
+    $scope.itens = [{id: 'direcao', direcao: 'Horários da direção:'},      ];
+    $scope.itens2 = [{id: 'refeicao', refeicao: 'Horários da refeição:'}];
+    $scope.itens3 = [{id: 'descanso', descanso: 'Horários do descanso:'}]; 
+    $scope.itens4 = [{id: 'carga', carga: 'Horários da carga:'}]; 
+    $scope.itens5 = [{id: 'descarga', descarga: 'Horários da descarga:'}]; 
+    $scope.itens6 = [{id: 'abastecimento', abastecimento: 'Horários do abastecimento:'}]; 
+    $scope.itens7 = [{id: 'tempoc', tempoc: 'Horários do tempo cliente:'}]; 
+    $scope.itens8 = [{id: 'fiscalizacao', fiscalizacao: 'Horários da fiscalização:'}]; 
+    $scope.itens9 = [{id: 'manutencao', manutencao: 'Horários da manutenção:'}]; 
+    $scope.itens10 = [{id: 'pernoite', pernoite: 'Horários da pernoite:'}];    
  }           
 })
 
