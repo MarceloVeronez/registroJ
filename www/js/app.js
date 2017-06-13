@@ -25,7 +25,7 @@ angular.module('starter', ['ionic'])
 
 .controller('AppCtrl', function($scope, HttpService) {
 
-
+  //Temporizador para esperar puxar os itens do mapa para salvar local
   $scope.temporizador = function(){
       setTimeout(function(){ 
         HttpService.insereMapaLocal($scope.mapas); alert("Inserção Local com sucesso");
@@ -33,11 +33,11 @@ angular.module('starter', ['ionic'])
       }
       ,3000);
   }
+  //Função que ativa o toggle direção
   $scope.direcaoF = true;
   $scope.ativador = function(){
     $scope.direcaoF = false;
   }
-  //Funcoes para toggles
 
  //Inicio da distancia do mapa
  $scope.CalculaDistancia = function(){
@@ -98,6 +98,7 @@ angular.module('starter', ['ionic'])
                     
                 }
             }
+  //Dados para iniciar os toggles desativados.
   $scope.refeicaoF = true;
   $scope.descansoF = true;
   $scope.cargaF = true;
@@ -109,6 +110,7 @@ angular.module('starter', ['ionic'])
   $scope.pernoiteF = true;
   $scope.aF = true;
   $scope.buttonF = true;
+  //Funções para ativar e desativar os toggles e salvar os horários que foram ativados e desativados em um banco local
   $scope.direcaoFu = function(response, status){
   if($scope.direcao.direcaoC == true){  
     $scope.refeicaoF = true;
@@ -491,6 +493,9 @@ $scope.pernoiteFu = function(response, status){
     HttpService.inserePernoiteLocal($scope.pernoite);
   }
   }
+  //Aqui acaba as funções dos toggles
+
+  //Função para consultar o mapa e armazenar as mensagens aparecidas na tela de consulta
  $scope.consultaMapas = function(){
     $scope.mapas = JSON.parse(HttpService.getMapasLocal());
     $scope.direcao = JSON.parse(HttpService.getDirecaoLocal());
@@ -517,6 +522,7 @@ $scope.pernoiteFu = function(response, status){
 })
 
 .service('HttpService', function($http) {
+    //Funções para salvar os dados locais
     return{
     insereMapaLocal: function(novo) { 
       // guarda os mapas
@@ -703,6 +709,9 @@ $scope.pernoiteFu = function(response, status){
       localStorage.setItem('pernoite', paraString);
       return novo;
    },
+   //Aqui acaba as funções de inserção local.
+
+   //Funções para retornar os dados locais e ser possivel a consulta
    getMapasLocal: function() {
      // retorna conteúdo da chave mapas  
      return localStorage.mapas;
