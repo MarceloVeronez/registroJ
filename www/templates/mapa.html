@@ -9,7 +9,7 @@
     <ion-pane>
       <ion-content ng-controller="AppCtrl">
 
-
+      <!--Inputs para salvar a origem e o destino do viajante-->
   <label class="item item-input">
    <input type="text" placeholder="Endereço de origem" ng-model="mapas.txtOrigem">
    </label>
@@ -17,13 +17,13 @@
  <label class="item item-input">
    <input type="text" placeholder="Endereço de destino" ng-model="mapas.txtDestino">
    </label>
-
+   <!--Botão que calcula a distância percorrida e tempo para a viagem e salva em local-->
   <a style="text-decoration:none" ng-click="temporizador()"><button class="button button-block button-dark" ng-click="CalculaDistancia()"> 
     Calcula Distância 
   </button></a>
 
 
-      
+        <!--Mapa-->
         <div><span id="litResultado">&nbsp;</span></div>
         <div style="padding: 10px 0 0; clear: both">
             <iframe width="750" scrolling="no" height="350" frameborder="0" id="map" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?saddr=são paulo&daddr=rio de janeiro&output=embed"></iframe>

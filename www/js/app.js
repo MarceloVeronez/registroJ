@@ -25,15 +25,22 @@ angular.module('starter', ['ionic'])
 
 .controller('AppCtrl', function($scope, HttpService) {
 
+
   $scope.temporizador = function(){
-     setTimeout(function() { HttpService.insereMapaLocal($scope.mapas); alert("Inserção Local com sucesso"); }, 3000);
+      setTimeout(function(){ 
+        HttpService.insereMapaLocal($scope.mapas); alert("Inserção Local com sucesso");
+        console.log($scope.direcaoF); 
+      }
+      ,3000);
+  }
+  $scope.direcaoF = true;
+  $scope.ativador = function(){
+    $scope.direcaoF = false;
   }
   //Funcoes para toggles
 
-
  //Inicio da distancia do mapa
  $scope.CalculaDistancia = function(){
-
     console.log("chegou aqui " + $scope.mapas.txtOrigem);
 
      $('#litResultado').html('Aguarde...');
@@ -91,6 +98,17 @@ angular.module('starter', ['ionic'])
                     
                 }
             }
+  $scope.refeicaoF = true;
+  $scope.descansoF = true;
+  $scope.cargaF = true;
+  $scope.descargaF = true;
+  $scope.abastecimentoF = true;
+  $scope.tempocF = true;
+  $scope.fiscalizacaoF = true;
+  $scope.manutencaoF = true;
+  $scope.pernoiteF = true;
+  $scope.aF = true;
+  $scope.buttonF = true;
   $scope.direcaoFu = function(response, status){
   if($scope.direcao.direcaoC == true){  
     $scope.refeicaoF = true;
@@ -104,7 +122,7 @@ angular.module('starter', ['ionic'])
     $scope.pernoiteF = true;
   }
   else{
-    $scope.refeicaoF = false;
+    $scope.pernoiteF = false;
     $scope.descansoF = false;
     $scope.cargaF = false;
     $scope.descargaF = false;
@@ -112,7 +130,7 @@ angular.module('starter', ['ionic'])
     $scope.tempocF = false;
     $scope.fiscalizacaoF = false;
     $scope.manutencaoF = false;
-    $scope.pernoiteF = false;
+    $scope.refeicaoF = false;
   }
   var data = new Date();
   var hora = data.getHours();
@@ -181,14 +199,14 @@ $scope.descansoFu = function(response, status){
   }
   else{
     $scope.direcaoF = false;
-    $scope.refeicaoF = false;
+    $scope.pernoiteF = false;
     $scope.cargaF = false;
     $scope.descargaF = false;
     $scope.abastecimentoF = false;
     $scope.tempocF = false;
     $scope.fiscalizacaoF = false;
     $scope.manutencaoF = false;
-    $scope.pernoiteF = false;
+    $scope.refeicaoF = false;
   }
   var data = new Date();
   var hora = data.getHours();
@@ -220,13 +238,13 @@ $scope.cargaFu = function(response, status){
   else{
     $scope.direcaoF = false;
     $scope.descansoF = false;
-    $scope.refeicaoF = false;
+    $scope.pernoiteF = false;
     $scope.descargaF = false;
     $scope.abastecimentoF = false;
     $scope.tempocF = false;
     $scope.fiscalizacaoF = false;
     $scope.manutencaoF = false;
-    $scope.pernoiteF = false;
+    $scope.refeicaoF = false;
   }
   var data = new Date();
   var hora = data.getHours();
@@ -259,12 +277,14 @@ $scope.descargaFu = function(response, status){
     $scope.direcaoF = false;
     $scope.descansoF = false;
     $scope.cargaF = false;
-    $scope.refeicaoF = false;
+    $scope.pernoiteF = false;
     $scope.abastecimentoF = false;
     $scope.tempocF = false;
     $scope.fiscalizacaoF = false;
     $scope.manutencaoF = false;
-    $scope.pernoiteF = false;
+    $scope.refeicaoF = false;
+    $scope.aF = false;
+    $scope.buttonF = false;
   }
   var data = new Date();
   var hora = data.getHours();
@@ -298,11 +318,11 @@ $scope.abastecimentoFu = function(response, status){
     $scope.descansoF = false;
     $scope.cargaF = false;
     $scope.descargaF = false;
-    $scope.refeicaoF = false;
+    $scope.pernoiteF = false;
     $scope.tempocF = false;
     $scope.fiscalizacaoF = false;
     $scope.manutencaoF = false;
-    $scope.pernoiteF = false;
+    $scope.refeicaoF = false;
   }
   var data = new Date();
   var hora = data.getHours();
@@ -337,10 +357,10 @@ $scope.tempocFu = function(response, status){
     $scope.cargaF = false;
     $scope.descargaF = false;
     $scope.abastecimentoF = false;
-    $scope.refeicaoF = false;
+    $scope.pernoiteF = false;
     $scope.fiscalizacaoF = false;
     $scope.manutencaoF = false;
-    $scope.pernoiteF = false;
+    $scope.refeicaoF = false;
   }
   var data = new Date();
   var hora = data.getHours();
@@ -376,9 +396,9 @@ $scope.fiscalizacaoFu = function(response, status){
     $scope.descargaF = false;
     $scope.abastecimentoF = false;
     $scope.tempocF = false;
-    $scope.refeicaoF = false;
-    $scope.manutencaoF = false;
     $scope.pernoiteF = false;
+    $scope.manutencaoF = false;
+    $scope.refeicaoF = false;
   }
   var data = new Date();
   var hora = data.getHours();

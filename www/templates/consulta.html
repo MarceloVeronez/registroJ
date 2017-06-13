@@ -3,13 +3,16 @@
     <h1 class="title" style="text-decoration:bold; text-align:center">Consulta</h1>
     </ion-nav-title>
     <ion-nav-bar class ="bar-dark">
+        <!--Botão para voltar para a tela de atividades.-->
         <ion-nav-back-button class="button button-dark" style="text-decoration:none; color:white">Voltar</ion-nav-back-button>
     </ion-nav-bar>
      <div>
       <ion-pane>
       <ion-content ng-controller="AppCtrl">
+      <!--Botão para realizar a consulta-->
       <button class="button button-dark button-block" ng-click="consultaMapas()">Consulta</button>
   		<ion-list>
+        <!--Itens da consula com suas respectivas mensagens-->
         <ion-item ng-repeat="mapas in mapas" class="item-text-wrap">
           Origem: {{ mapas.txtOrigem }}<br>
          Destino: {{ mapas.txtDestino }}<br>

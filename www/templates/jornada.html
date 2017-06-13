@@ -5,47 +5,56 @@
      <div>
       <ion-pane>
       <ion-content ng-controller="AppCtrl">
-     <ul class="list">
-
+    <!--Botão para iniciar jornada e chamar a tela de mapas e ativar o toggle "direção"-->
    <a href="#/menu/mapa" style="text-decoration:none">
-    <button class="button button-block button-dark" style="color:White;">
+    <button class="button button-block button-dark" style="color:White;" ng-click="ativador()">
         Inicio Jornada
     </button>
    </a>
-
-     <ion-toggle ng-click="direcaoFu()"  ng-model="direcao.direcaoC" ng-disabled="direcaoF">
-          Direção
+    <!--Toggles para ativar e desativar as atividades-->
+    <ion-toggle class="toggle-dark" ng-click="direcaoFu()"  ng-model="direcao.direcaoC" ng-disabled="direcaoF">
+       Direção
     </ion-toggle>
+
     <ion-toggle ng-click="refeicaoFu()"  ng-model="refeicao.refeicaoC" ng-disabled="refeicaoF">
-          Refeição
-    </ion-toggle> 
+       Refeição
+    </ion-toggle>
+
     <ion-toggle ng-click="descansoFu()"  ng-model="descanso.descansoC" ng-disabled="descansoF">
-          Descanso
+      Descanso
     </ion-toggle>
+
     <ion-toggle ng-click="cargaFu()" ng-model="carga.cargaC" ng-disabled="cargaF">
-          Carga
+      Carga
     </ion-toggle>
+
     <ion-toggle ng-click="descargaFu()"  ng-model="descarga.descargaC" ng-disabled="descargaF">
-          Descarga
+      Descarga
     </ion-toggle>
+
     <ion-toggle ng-click="abastecimentoFu()" ng-model="abastecimento.abastecimentoC" ng-disabled="abastecimentoF">
-          Abastecimento
+      Abastecimento
     </ion-toggle>
+
     <ion-toggle ng-click="tempocFu()" ng-model="tempoc.tempocC" ng-disabled="tempocF">
-          Tempo cliente
+      Tempo cliente
     </ion-toggle>
+
     <ion-toggle ng-click="fiscalizacaoFu()"  ng-model="fiscalizacao.fiscalizacaoC" ng-disabled="fiscalizacaoF">
-          Fiscalização
-    </ion-toggle >
+      Fiscalização
+    </ion-toggle>
+
     <ion-toggle ng-click="manutencaoFu()"  ng-model="manutencao.manutencaoC" ng-disabled="manutencaoF">
-          Manutenção
+      Manutenção
     </ion-toggle>
+
     <ion-toggle ng-click="pernoiteFu()"  ng-model="pernoite.pernoiteC" ng-disabled="pernoiteF">
-          Pernoite
+      Pernoite
     </ion-toggle>
 
- <a href="#/menu/consulta" style="text-decoration:none"><button class="button button-block button-dark" style="color:white;">Finalizar Jornada</button></a>
+    <!--Botão para finalizar jornada e chamar a tela de consulta-->
+ <a href="#/menu/consulta" style="text-decoration:none" ng-disabled="aF" ng-model="aC"><button class="button button-block button-dark" style="color:white;" ng-disabled="buttonF" ng-model="buttonC">Finalizar Jornada</button></a>
 
-
-  
+    </ion-content>
+  </ion-pane>
 </ion-view>
