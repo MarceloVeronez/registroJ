@@ -4,7 +4,6 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic'])
-
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
@@ -519,6 +518,20 @@ $scope.pernoiteFu = function(response, status){
     $scope.itens9 = [{id: 'manutencao', manutencao: 'Horários da manutenção:'}]; 
     $scope.itens10 = [{id: 'pernoite', pernoite: 'Horários da pernoite:'}];    
  }           
+
+
+  $scope.insere = function(){
+    var aux = JSON.parse(HttpService.getMapasLocal());
+    console.log(aux);
+    console.log("aeua");
+    setTimeout(function(){ 
+      HttpService.insereMapas(aux)
+      .then(function(response) {
+      $scope.mapas = response;
+    }); }
+    ,3000);
+ }
+
 })
 
 .service('HttpService', function($http) {
@@ -717,44 +730,45 @@ $scope.pernoiteFu = function(response, status){
      return localStorage.mapas;
    },
    getDirecaoLocal: function() {
-    console.log(localStorage.direcao);
      return localStorage.direcao;
    },
    getRefeicaoLocal: function() {
-    console.log(localStorage.refeicao);
      return localStorage.refeicao;
    },
    getDescansoLocal: function() {
-    console.log(localStorage.descanso);
      return localStorage.descanso;
    },
    getCargaLocal: function() {
-    console.log(localStorage.carga);
      return localStorage.carga;
    },
    getDescargaLocal: function() {
-    console.log(localStorage.descarga);
      return localStorage.descarga;
    },
    getAbastecimentoLocal: function() {
-    console.log(localStorage.abastecimento);
      return localStorage.abastecimento;
    },
    getTempocLocal: function() {
-    console.log(localStorage.tempoc);
      return localStorage.tempoc;
    },
    getFiscalizacaoLocal: function() {
-    console.log(localStorage.fiscalizacao);
      return localStorage.fiscalizacao;
    },
    getManutencaoLocal: function() {
-    console.log(localStorage.manutencao);
      return localStorage.manutencao;
    },
    getPernoiteLocal: function() {
-    console.log(localStorage.pernoite);
      return localStorage.pernoite;
-   }
+   },
+   insereMapas: function(uga) {
+    console.log(uga);
+     // $http returns a promise, which has a then function, which also returns a promise.
+     return $http.post('http://localhost:3000/insere', uga)
+       .then(function(response) {
+         // In the response, resp.data contains the result. Check the console to see all of the data returned.
+         console.log('Inseriu Mapa', response);
+
+         return response.data;
+      });
+     }
   }
   });
