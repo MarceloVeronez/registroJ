@@ -3,59 +3,103 @@
     <h1 class="title" style="text-decoration:bold; text-align:center">Jornada</h1>
     </ion-nav-title>
      <div>
-      <ion-pane>
+      <ion-pane class="jornada-custom">
       <ion-content ng-controller="AppCtrl">
     <!--Botão para iniciar jornada e chamar a tela de mapas e ativar o toggle "direção"-->
-    <button class="button button-block button-dark" style="color:White;" ng-click="ativador();pagina();" ng-disabled="jornadaF">
+    <button class="button button-block button-dark" style="color:White;" ng-click="ativador();pagina();" ng-disabled="jornadaF" id="botao-home">
         Inicio Jornada
     </button>
     <!--Toggles para ativar e desativar as atividades-->
-    <ion-toggle class="toggle-dark" ng-click="direcaoFu()"  ng-model="direcao.direcaoC" ng-disabled="direcaoF">
-       Direção
-    </ion-toggle>
+    <div class="card">
+      <div class="jornada-toogle">
 
-    <ion-toggle ng-click="refeicaoFu()"  ng-model="refeicao.refeicaoC" ng-disabled="refeicaoF">
-       Refeição
-    </ion-toggle>
+        <div class="item item-divider center"></div>
 
-    <ion-toggle ng-click="descansoFu()"  ng-model="descanso.descansoC" ng-disabled="descansoF">
-      Descanso
-    </ion-toggle>
+          <div class="item item-avatar">
+              <img src="/img/rua-img.jpg">
+                <ion-toggle class="toggle-dark" ng-click="direcaoFu()"  ng-model="direcao.direcaoC" ng-disabled="direcaoF" id="bt">
+                  Direção
+                </ion-toggle>
+          </div>
 
-    <ion-toggle ng-click="cargaFu()" ng-model="carga.cargaC" ng-disabled="cargaF">
-      Carga
-    </ion-toggle>
-
-    <ion-toggle ng-click="descargaFu()"  ng-model="descarga.descargaC" ng-disabled="descargaF">
-      Descarga
-    </ion-toggle>
-
-    <ion-toggle ng-click="abastecimentoFu()" ng-model="abastecimento.abastecimentoC" ng-disabled="abastecimentoF">
-      Abastecimento
-    </ion-toggle>
-
-    <ion-toggle ng-click="tempocFu()" ng-model="tempoc.tempocC" ng-disabled="tempocF">
-      Tempo cliente
-    </ion-toggle>
-
-    <ion-toggle ng-click="fiscalizacaoFu()"  ng-model="fiscalizacao.fiscalizacaoC" ng-disabled="fiscalizacaoF">
-      Fiscalização
-    </ion-toggle>
-
-    <ion-toggle ng-click="manutencaoFu()"  ng-model="manutencao.manutencaoC" ng-disabled="manutencaoF">
-      Manutenção
-    </ion-toggle>
-
-    <ion-toggle ng-click="pernoiteFu()"  ng-model="pernoite.pernoiteC" ng-disabled="pernoiteF">
-      Pernoite
-    </ion-toggle>
+        
+        <div class="item item-avatar">
+            <img src="/img/refeicao-img.jpg">
+               <ion-toggle ng-click="refeicaoFu()"  ng-model="refeicao.refeicaoC" ng-disabled="refeicaoF" id="bt">
+                Refeição
+              </ion-toggle>
+        </div>
 
 
-    <button class="button button-block button-dark" style="color:white" ng-disabled="mapaF" ng-click="mapaRef()">
+        <div class="item item-avatar">
+            <img src="/img/descanço-img.jpg">
+              <ion-toggle ng-click="descansoFu()"  ng-model="descanso.descansoC" ng-disabled="descansoF" id="bt">
+                Descanso
+              </ion-toggle>  
+        </div>
+
+        <div class="item item-avatar">
+            <img src="/img/carga-img.jpg">
+              <ion-toggle ng-click="cargaFu()" ng-model="carga.cargaC" ng-disabled="cargaF" id="bt">
+                Carga
+              </ion-toggle> 
+        </div>
+
+        <div class="item item-avatar">
+            <img src="/img/descarga-img.jpg">
+              <ion-toggle ng-click="descargaFu()"  ng-model="descarga.descargaC" ng-disabled="descargaF" id="bt">
+                Descarga
+              </ion-toggle>
+        </div>
+
+        <div class="item item-avatar">
+            <img src="/img/abastecendo-img.jpg">
+              <ion-toggle ng-click="abastecimentoFu()" ng-model="abastecimento.abastecimentoC" ng-disabled="abastecimentoF" id="bt">
+                Abastecimento
+              </ion-toggle>
+
+        </div>
+
+        <div class="item item-avatar">
+            <img src="/img/tempo-img.jpg">
+              <ion-toggle ng-click="tempocFu()" ng-model="tempoc.tempocC" ng-disabled="tempocF" id="bt">
+                Tempo cliente
+              </ion-toggle>
+
+        </div>
+
+        <div class="item item-avatar">
+            <img src="/img/fiscalizaçao-img.jpg">
+              <ion-toggle ng-click="fiscalizacaoFu()"  ng-model="fiscalizacao.fiscalizacaoC" ng-disabled="fiscalizacaoF" id="bt">
+                Fiscalização
+              </ion-toggle>
+
+        </div>
+
+        <div class="item item-avatar">
+            <img src="/img/manutençao-img.jpg">
+              <ion-toggle ng-click="manutencaoFu()"  ng-model="manutencao.manutencaoC" ng-disabled="manutencaoF" id="bt">
+                Manutenção
+              </ion-toggle>
+
+        </div>
+
+        <div class="item item-avatar">
+            <img src="/img/pernoite-img.jpg">
+              <ion-toggle ng-click="pernoiteFu()"  ng-model="pernoite.pernoiteC" ng-disabled="pernoiteF" id="bt">
+                Pernoite
+              </ion-toggle>
+
+        </div>
+
+  </div>
+  </div>
+
+    <button class="button button-block button-dark" style="color:white" ng-disabled="mapaF" ng-click="mapaRef()" id="botao-home" >
       Checar mapa
     </button>
     <!--Botão para finalizar jornada e chamar a tela de consulta-->  
- <a href="#/menu/consulta" style="text-decoration:none" ng-disabled="true" ng-model="aC"><button class="button button-block button-dark" style="color:white;" ng-disabled="false" ng-model="buttonC" ng-click="desativarTudo()">Finalizar Jornada</button></a>
+ <a href="#/menu/consulta" style="text-decoration:none" ng-disabled="true" ng-model="aC"><button class="button button-block button-dark" style="color:white;" ng-disabled="false" ng-model="buttonC" ng-click="desativarTudo()" id="botao-home">Finalizar Jornada</button></a>
 
     </ion-content>
   </ion-pane>

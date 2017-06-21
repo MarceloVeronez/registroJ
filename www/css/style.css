@@ -1,3 +1,32 @@
+.jornada-custom{
+  width: 100%;
+  margin: 0;
+  background-image: url(../img/jornada-img-2.jpg);
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 60);
+}
+
+.menu-custom{
+  width: 100%;
+  margin: 0;
+  /*background-image*/
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 60);
+}
+
+
+.home-custom{
+  width: 100%;
+  margin: 0;
+  background-color: #000;
+  background-image: url(../img/home-img-2.jpg);
+  background-size: cover;
+  background-position: center;
+  opacity: 1.0;
+}
+
 .login-custom {
   width: 100%;
   margin: 0;
@@ -109,7 +138,33 @@
   margin-left: 10px;
   font-size: 200px;
 }
+
+
+  #botao-home{
+    text-align: center;
+    border-radius: 30px;
+  }
+
+  #bt{
+    color: #000000;
+    font-size: 17px;
+    font-style: bold;
+    font-weight: 500;
+
+  }
+
+    #bt2{
+    color: #FFFAFA;
+    text-align: center;
+ 
+  }
 .toggle-dark{
   color: black;
 }
-/* Empty. Add your own CSS if you like */
+.card{
+  opacity: 0.7;
+}
+.jornada-toogle{
+  opacity: 1.5;
+
+}
