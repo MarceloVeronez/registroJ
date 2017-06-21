@@ -50,6 +50,15 @@ angular.module('starter')
       }
     })
 
+.state('menu.mapaNovo',{
+      url:'/mapaNovo',
+      views :{
+        'menuConteudo' : {
+          templateUrl: 'templates/mapaNovo.html'
+        }
+      }
+    })
+
 
     $urlRouterProvider.otherwise('/login');
   })

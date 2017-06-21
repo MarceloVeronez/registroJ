@@ -1,0 +1,29 @@
+<ion-view>
+  <body ng-app="starter">
+  <ion-nav-title>
+      <h1 class="title" style="text-decoration:bold">Mapa</h1>
+    </ion-nav-title>
+    <ion-nav-bar class ="bar-dark">
+        <ion-nav-back-button class="button button-dark" style="text-decoration:none; color:white">Voltar</ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-pane>
+      <ion-content ng-controller="AppCtrl">
+      <button class="button button-dark button-block" ng-click="consultaMapaNovo()">Checar dados</button>
+      <ion-list>
+      	<ion-item ng-repeat="mapas in mapas" class="item-text-wrap">
+          Origem: {{ mapas.txtOrigem }}<br>
+         Destino: {{ mapas.txtDestino }}<br>
+         Tempo de viagem: {{ mapas.tempo }}<br>
+         Distância percorrida: {{ mapas.distancia }}<br>
+         Horário de início: {{mapas.hora}}
+         </ion-item>
+      </ion-list>
+      <div><span id="litResultado">&nbsp;</span></div>
+        <div style="padding: 10px 0 0; clear: both">
+            <iframe width="750" scrolling="no" height="350" frameborder="0" id="map" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?saddr=undefined&daddr=undefined&output=embed"></iframe>
+        </div>
+
+      </ion-content>
+    </ion-pane>
+  </body>
+</ion-view>

@@ -23,7 +23,13 @@ angular.module('starter', ['ionic'])
 })
 
 .controller('AppCtrl', function($scope, HttpService) {
+  $scope.pagina = function(){
+    window.location.href="#/menu/mapa";
+  }
 
+  $scope.mapaRef = function(){
+    window.location.href="#menu/mapaNovo"
+  }
   //Temporizador para esperar puxar os itens do mapa para salvar local
   $scope.temporizador = function(){
       setTimeout(function(){ 
@@ -36,6 +42,9 @@ angular.module('starter', ['ionic'])
   $scope.direcaoF = true;
   $scope.ativador = function(){
     $scope.direcaoF = false;
+    $scope.jornadaF = true;
+    $scope.mapaF = false;
+    localStorage.clear();
   }
 
  //Inicio da distancia do mapa
@@ -109,6 +118,8 @@ angular.module('starter', ['ionic'])
   $scope.pernoiteF = true;
   $scope.aF = true;
   $scope.buttonF = true;
+  $scope.aJornada = true;
+  $scope.mapaF = true;
   //Funções para ativar e desativar os toggles e salvar os horários que foram ativados e desativados em um banco local
   $scope.direcaoFu = function(response, status){
   if($scope.direcao.direcaoC == true){  
@@ -121,6 +132,8 @@ angular.module('starter', ['ionic'])
     $scope.fiscalizacaoF = true;
     $scope.manutencaoF = true;
     $scope.pernoiteF = true;
+    $scope.jornadaF = true;
+    $scope.aJornada = true;
   }
   else{
     $scope.pernoiteF = false;
@@ -493,7 +506,22 @@ $scope.pernoiteFu = function(response, status){
   }
   }
   //Aqui acaba as funções dos toggles
-
+  //Função para desativar todos os toggles ao clicar em finalizar jornada.
+  $scope.desativarTudo = function(){
+    $scope.direcaoF = true;
+    $scope.refeicaoF = true;
+    $scope.descansoF = true;
+    $scope.cargaF = true;
+    $scope.descargaF = true;
+    $scope.abastecimentoF = true;
+    $scope.tempocF = true;
+    $scope.fiscalizacaoF = true;
+    $scope.manutencaoF = true;
+    $scope.pernoiteF = true;
+    $scope.aF = true;
+    $scope.buttonF = true;
+    $scope.jornadaF = false;
+  }
   //Função para consultar o mapa e armazenar as mensagens aparecidas na tela de consulta
  $scope.consultaMapas = function(){
     $scope.mapas = JSON.parse(HttpService.getMapasLocal());
@@ -518,6 +546,13 @@ $scope.pernoiteFu = function(response, status){
     $scope.itens9 = [{id: 'manutencao', manutencao: 'Horários da manutenção:'}]; 
     $scope.itens10 = [{id: 'pernoite', pernoite: 'Horários da pernoite:'}];    
  }           
+
+ $scope.consultaMapaNovo = function(){
+  $scope.mapas = JSON.parse(HttpService.getMapasLocal());
+  var txtOrigem = $scope.mapas[0].txtOrigem;
+  var txtDestino = $scope.mapas[0].txtDestino;
+  $("#map").attr("src", "https://maps.google.com/maps?saddr=" + txtOrigem + "&daddr=" + txtDestino + "&output=embed");
+ }
 
 
   $scope.insere = function(){
@@ -726,38 +761,114 @@ $scope.pernoiteFu = function(response, status){
 
    //Funções para retornar os dados locais e ser possivel a consulta
    getMapasLocal: function() {
-     // retorna conteúdo da chave mapas  
-     return localStorage.mapas;
+    if (localStorage.mapas != undefined){  
+      return localStorage.mapas;
+    }
+    else{
+      var erro = '[{"txtOrigem":"Não foi salvo nenhuma origem.","txtDestino":"Não foi salvo nenhum destino.","distancia":"Não foi calculada nenhuma distancia.","tempo":"Não foi salvo nenhum tempo.","hora":"Não foi iniciado nenhum horário."}]';
+      localStorage.setItem('mapas', erro);
+      return localStorage.mapas;
+    }
    },
    getDirecaoLocal: function() {
+    if(localStorage.direcao != undefined){
      return localStorage.direcao;
+    }
+    else{
+      var erro2 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feta."}]';
+      localStorage.setItem('direcao', erro2);
+      return localStorage.direcao;
+    }
    },
    getRefeicaoLocal: function() {
+     if(localStorage.refeicao != undefined){
      return localStorage.refeicao;
+    }
+    else{
+      var erro3 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feta."}]';
+      localStorage.setItem('refeicao', erro3);
+      return localStorage.refeicao;
+    }
    },
    getDescansoLocal: function() {
+     if(localStorage.descanso != undefined){
      return localStorage.descanso;
+    }
+    else{
+      var erro4 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feta."}]';
+      localStorage.setItem('descanso', erro4);
+      return localStorage.descanso;
+    }
    },
    getCargaLocal: function() {
+     if(localStorage.carga != undefined){
      return localStorage.carga;
+    }
+    else{
+      var erro5 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feta."}]';
+      localStorage.setItem('carga', erro5);
+      return localStorage.carga;
+    }
    },
    getDescargaLocal: function() {
+     if(localStorage.descarga != undefined){
      return localStorage.descarga;
+    }
+    else{
+      var erro6 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feta."}]';
+      localStorage.setItem('descarga', erro6);
+      return localStorage.descarga;
+    }
    },
    getAbastecimentoLocal: function() {
+     if(localStorage.abastecimento != undefined){
      return localStorage.abastecimento;
+    }
+    else{
+      var erro7 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feta."}]';
+      localStorage.setItem('abastecimento', erro7);
+      return localStorage.abastecimento;
+    }
    },
    getTempocLocal: function() {
+     if(localStorage.tempoc != undefined){
      return localStorage.tempoc;
+    }
+    else{
+      var erro8 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feta."}]';
+      localStorage.setItem('tempoc', erro8);
+      return localStorage.tempoc;
+    }
    },
    getFiscalizacaoLocal: function() {
+     if(localStorage.fiscalizacao != undefined){
      return localStorage.fiscalizacao;
+    }
+    else{
+      var erro9 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feta."}]';
+      localStorage.setItem('fiscalizacao', erro9);
+      return localStorage.fiscalizacao;
+    }
    },
    getManutencaoLocal: function() {
+     if(localStorage.manutencao != undefined){
      return localStorage.manutencao;
+    }
+    else{
+      var erro10 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feta."}]';
+      localStorage.setItem('manutencao', erro10);
+      return localStorage.manutencao;
+    }
    },
    getPernoiteLocal: function() {
+     if(localStorage.pernoite != undefined){
      return localStorage.pernoite;
+    }
+    else{
+      var erro11 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feta."}]';
+      localStorage.setItem('pernoite', erro11);
+      return localStorage.pernoite;
+    }
    },
    insereMapas: function(uga) {
     console.log(uga);

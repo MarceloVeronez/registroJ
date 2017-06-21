@@ -6,11 +6,9 @@
       <ion-pane>
       <ion-content ng-controller="AppCtrl">
     <!--Botão para iniciar jornada e chamar a tela de mapas e ativar o toggle "direção"-->
-   <a href="#/menu/mapa" style="text-decoration:none">
-    <button class="button button-block button-dark" style="color:White;" ng-click="ativador()">
+    <button class="button button-block button-dark" style="color:White;" ng-click="ativador();pagina();" ng-disabled="jornadaF">
         Inicio Jornada
     </button>
-   </a>
     <!--Toggles para ativar e desativar as atividades-->
     <ion-toggle class="toggle-dark" ng-click="direcaoFu()"  ng-model="direcao.direcaoC" ng-disabled="direcaoF">
        Direção
@@ -52,8 +50,12 @@
       Pernoite
     </ion-toggle>
 
-    <!--Botão para finalizar jornada e chamar a tela de consulta-->
- <a href="#/menu/consulta" style="text-decoration:none" ng-disabled="false" ng-model="aC"><button class="button button-block button-dark" style="color:white;" ng-disabled="false" ng-model="buttonC">Finalizar Jornada</button></a>
+
+    <button class="button button-block button-dark" style="color:white" ng-disabled="mapaF" ng-click="mapaRef()">
+      Checar mapa
+    </button>
+    <!--Botão para finalizar jornada e chamar a tela de consulta-->  
+ <a href="#/menu/consulta" style="text-decoration:none" ng-disabled="true" ng-model="aC"><button class="button button-block button-dark" style="color:white;" ng-disabled="false" ng-model="buttonC" ng-click="desativarTudo()">Finalizar Jornada</button></a>
 
     </ion-content>
   </ion-pane>
