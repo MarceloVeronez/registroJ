@@ -562,6 +562,8 @@ $scope.pernoiteFu = function(response, status){
 
 
   $scope.insere = function(){
+      var x =confirm("Deseja mesmo sincronizar? Isso irá apagar seus dados locais!");
+      if (x == true){
       HttpService.insereMapas($scope.mapas).then(function(response) { $scope.mapas = response; });
       setTimeout(function() {
       for (var i = 0 in $scope.direcao){
@@ -593,6 +595,9 @@ $scope.pernoiteFu = function(response, status){
       setTimeout(function() {
       for (var j = 0 in $scope.pernoite){
       HttpService.inserePernoite($scope.pernoite[j]).then(function(response) { $scope.pernoite = response; }); }}, 1000);
+
+      setTimeout(function() { localStorage.clear();}, 3000);
+    }
  }
 
 })
