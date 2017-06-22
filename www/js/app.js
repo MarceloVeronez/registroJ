@@ -101,7 +101,7 @@ angular.module('starter', ['ionic'])
                     var dia = data.getDate();
                     var mes = data.getMonth()+1;
                     var ano = data.getFullYear();
-                    $($scope.mapas.hora = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo);
+                    $scope.mapas.hora = dia + '/' + mes + '/' + ano + '-' + hora + ':' + minuto + ':' + segundo;
                     
                     
                 }
@@ -120,6 +120,7 @@ angular.module('starter', ['ionic'])
   $scope.buttonF = true;
   $scope.aJornada = true;
   $scope.mapaF = true;
+  $scope.sincronizarF = true;
   //Funções para ativar e desativar os toggles e salvar os horários que foram ativados e desativados em um banco local
   $scope.direcaoFu = function(response, status){
   if($scope.direcao.direcaoC == true){  
@@ -544,8 +545,13 @@ $scope.pernoiteFu = function(response, status){
     $scope.itens7 = [{id: 'tempoc', tempoc: 'Horários do tempo cliente:'}]; 
     $scope.itens8 = [{id: 'fiscalizacao', fiscalizacao: 'Horários da fiscalização:'}]; 
     $scope.itens9 = [{id: 'manutencao', manutencao: 'Horários da manutenção:'}]; 
-    $scope.itens10 = [{id: 'pernoite', pernoite: 'Horários da pernoite:'}];    
+    $scope.itens10 = [{id: 'pernoite', pernoite: 'Horários da pernoite:'}]; 
+    $scope.sincronizarF = false;   
  }           
+ $scope.teste = function(){
+  console.log($scope.direcao[1]);
+  console.log($scope.direcao[0]);
+ }
 
  $scope.consultaMapaNovo = function(){
   $scope.mapas = JSON.parse(HttpService.getMapasLocal());
@@ -556,15 +562,37 @@ $scope.pernoiteFu = function(response, status){
 
 
   $scope.insere = function(){
-    var aux = JSON.parse(HttpService.getMapasLocal());
-    console.log(aux);
-    console.log("aeua");
-    setTimeout(function(){ 
-      HttpService.insereMapas(aux)
-      .then(function(response) {
-      $scope.mapas = response;
-    }); }
-    ,3000);
+      HttpService.insereMapas($scope.mapas).then(function(response) { $scope.mapas = response; });
+      setTimeout(function() {
+      for (var i = 0 in $scope.direcao){
+      HttpService.insereDirecao($scope.direcao[i]).then(function(response) { $scope.direcao = response; }); }}, 1000);
+      setTimeout(function() {
+      for (var a = 0 in $scope.refeicao){
+      HttpService.insereRefeicao($scope.refeicao[a]).then(function(response) { $scope.refeicao = response; }); }}, 1000);
+      setTimeout(function() {
+      for (var b = 0 in $scope.descanso){
+      HttpService.insereDescanso($scope.descanso[b]).then(function(response) { $scope.descanso = response; }); }}, 1000);
+      setTimeout(function() {
+      for (var c = 0 in $scope.carga){
+      HttpService.insereCarga($scope.carga[c]).then(function(response) { $scope.carga = response; }); }}, 1000);
+      setTimeout(function() {
+      for (var d = 0 in $scope.descarga){
+      HttpService.insereDescarga($scope.descarga[d]).then(function(response) { $scope.descarga = response; }); }}, 1000);
+      setTimeout(function() {
+      for (var e = 0 in $scope.abastecimento){
+      HttpService.insereAbastecimento($scope.abastecimento[e]).then(function(response) { $scope.abastecimento = response; }); }}, 1000);
+      setTimeout(function() {
+      for (var f = 0 in $scope.tempoc){
+      HttpService.insereTempoc($scope.tempoc[f]).then(function(response) { $scope.tempoc = response; }); }}, 1000);
+      setTimeout(function() {
+      for (var g = 0 in $scope.fiscalizacao){
+      HttpService.insereFiscalizacao($scope.fiscalizacao[g]).then(function(response) { $scope.fiscalizacao = response; }); }}, 1000);
+      setTimeout(function() {
+      for (var h = 0 in $scope.manutencao){
+      HttpService.insereManutencao($scope.manutencao[h]).then(function(response) { $scope.manutencao = response; }); }}, 1000);
+      setTimeout(function() {
+      for (var j = 0 in $scope.pernoite){
+      HttpService.inserePernoite($scope.pernoite[j]).then(function(response) { $scope.pernoite = response; }); }}, 1000);
  }
 
 })
@@ -775,7 +803,7 @@ $scope.pernoiteFu = function(response, status){
      return localStorage.direcao;
     }
     else{
-      var erro2 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feta."}]';
+      var erro2 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feita."}]';
       localStorage.setItem('direcao', erro2);
       return localStorage.direcao;
     }
@@ -785,7 +813,7 @@ $scope.pernoiteFu = function(response, status){
      return localStorage.refeicao;
     }
     else{
-      var erro3 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feta."}]';
+      var erro3 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feita."}]';
       localStorage.setItem('refeicao', erro3);
       return localStorage.refeicao;
     }
@@ -795,7 +823,7 @@ $scope.pernoiteFu = function(response, status){
      return localStorage.descanso;
     }
     else{
-      var erro4 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feta."}]';
+      var erro4 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feita."}]';
       localStorage.setItem('descanso', erro4);
       return localStorage.descanso;
     }
@@ -805,7 +833,7 @@ $scope.pernoiteFu = function(response, status){
      return localStorage.carga;
     }
     else{
-      var erro5 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feta."}]';
+      var erro5 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feita."}]';
       localStorage.setItem('carga', erro5);
       return localStorage.carga;
     }
@@ -815,7 +843,7 @@ $scope.pernoiteFu = function(response, status){
      return localStorage.descarga;
     }
     else{
-      var erro6 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feta."}]';
+      var erro6 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feita."}]';
       localStorage.setItem('descarga', erro6);
       return localStorage.descarga;
     }
@@ -825,7 +853,7 @@ $scope.pernoiteFu = function(response, status){
      return localStorage.abastecimento;
     }
     else{
-      var erro7 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feta."}]';
+      var erro7 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feita."}]';
       localStorage.setItem('abastecimento', erro7);
       return localStorage.abastecimento;
     }
@@ -835,7 +863,7 @@ $scope.pernoiteFu = function(response, status){
      return localStorage.tempoc;
     }
     else{
-      var erro8 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feta."}]';
+      var erro8 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feita."}]';
       localStorage.setItem('tempoc', erro8);
       return localStorage.tempoc;
     }
@@ -845,7 +873,7 @@ $scope.pernoiteFu = function(response, status){
      return localStorage.fiscalizacao;
     }
     else{
-      var erro9 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feta."}]';
+      var erro9 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feita."}]';
       localStorage.setItem('fiscalizacao', erro9);
       return localStorage.fiscalizacao;
     }
@@ -855,7 +883,7 @@ $scope.pernoiteFu = function(response, status){
      return localStorage.manutencao;
     }
     else{
-      var erro10 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feta."}]';
+      var erro10 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feita."}]';
       localStorage.setItem('manutencao', erro10);
       return localStorage.manutencao;
     }
@@ -865,18 +893,117 @@ $scope.pernoiteFu = function(response, status){
      return localStorage.pernoite;
     }
     else{
-      var erro11 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feta."}]';
+      var erro11 = '[{"inicio":"Esta atividade não foi feita.","fim":"Esta atividade não foi feita."}]';
       localStorage.setItem('pernoite', erro11);
       return localStorage.pernoite;
     }
    },
    insereMapas: function(uga) {
-    console.log(uga);
      // $http returns a promise, which has a then function, which also returns a promise.
-     return $http.post('http://localhost:3000/insere', uga)
+     return $http.post('http://localhost:3000/insere/mapas', uga)
        .then(function(response) {
          // In the response, resp.data contains the result. Check the console to see all of the data returned.
          console.log('Inseriu Mapa', response);
+
+         return response.data;
+      });
+     },
+     insereDirecao: function(uga) {
+     // $http returns a promise, which has a then function, which also returns a promise.
+     return $http.post('http://localhost:3000/insere/direcao', uga)
+       .then(function(response) {
+         // In the response, resp.data contains the result. Check the console to see all of the data returned.
+         console.log('Inseriu Direcao', response);
+
+         return response.data;
+      });
+     },
+     insereRefeicao: function(uga) {
+     // $http returns a promise, which has a then function, which also returns a promise.
+     return $http.post('http://localhost:3000/insere/refeicao', uga)
+       .then(function(response) {
+         // In the response, resp.data contains the result. Check the console to see all of the data returned.
+         console.log('Inseriu Refeicao', response);
+
+         return response.data;
+      });
+     },
+     insereDescanso: function(uga) {
+     // $http returns a promise, which has a then function, which also returns a promise.
+     return $http.post('http://localhost:3000/insere/descanso', uga)
+       .then(function(response) {
+         // In the response, resp.data contains the result. Check the console to see all of the data returned.
+         console.log('Inseriu Descanso', response);
+
+         return response.data;
+      });
+     },
+     insereCarga: function(uga) {
+     // $http returns a promise, which has a then function, which also returns a promise.
+     return $http.post('http://localhost:3000/insere/carga', uga)
+       .then(function(response) {
+         // In the response, resp.data contains the result. Check the console to see all of the data returned.
+         console.log('Inseriu Carga', response);
+
+         return response.data;
+      });
+     },
+     insereDescarga: function(uga) {
+     // $http returns a promise, which has a then function, which also returns a promise.
+     return $http.post('http://localhost:3000/insere/descarga', uga)
+       .then(function(response) {
+         // In the response, resp.data contains the result. Check the console to see all of the data returned.
+         console.log('Inseriu Descarga', response);
+
+         return response.data;
+      });
+     },
+     insereAbastecimento: function(uga) {
+     // $http returns a promise, which has a then function, which also returns a promise.
+     return $http.post('http://localhost:3000/insere/abastecimento', uga)
+       .then(function(response) {
+         // In the response, resp.data contains the result. Check the console to see all of the data returned.
+         console.log('Inseriu abastecimento', response);
+
+         return response.data;
+      });
+     },
+     insereTempoc: function(uga) {
+     // $http returns a promise, which has a then function, which also returns a promise.
+     return $http.post('http://localhost:3000/insere/tempoc', uga)
+       .then(function(response) {
+         // In the response, resp.data contains the result. Check the console to see all of the data returned.
+         console.log('Inseriu Tempoc', response);
+
+         return response.data;
+      });
+     },
+     insereFiscalizacao: function(uga) {
+     // $http returns a promise, which has a then function, which also returns a promise.
+     return $http.post('http://localhost:3000/insere/fiscalizacao', uga)
+       .then(function(response) {
+         // In the response, resp.data contains the result. Check the console to see all of the data returned.
+         console.log('Inseriu Fiscalizacao', response);
+
+         return response.data;
+      });
+     },
+     insereManutencao: function(uga) {
+     // $http returns a promise, which has a then function, which also returns a promise.
+     return $http.post('http://localhost:3000/insere/manutencao', uga)
+       .then(function(response) {
+         // In the response, resp.data contains the result. Check the console to see all of the data returned.
+         console.log('Inseriu Manutencao', response);
+
+         return response.data;
+      });
+     },
+     inserePernoite: function(uga) {
+     // $http returns a promise, which has a then function, which also returns a promise.
+     return $http.post('http://localhost:3000/insere/pernoite', uga)
+       .then(function(response) {
+         // In the response, resp.data contains the result. Check the console to see all of the data returned.
+         console.log('Inseriu Pernoite', response);
 
          return response.data;
       });

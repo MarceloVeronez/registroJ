@@ -10,7 +10,7 @@
       <ion-pane>
       <ion-content ng-controller="AppCtrl">
       <!--Botão para realizar a consulta-->
-      <a style="text-decoration:none"><button class="button button-dark button-block" ng-click="consultaMapas()">Consulta</button>
+      <a style="text-decoration:none"><button class="button button-dark button-block" ng-click="consultaMapas();">Consulta</button>
   		<ion-list>
         <!--Itens da consula com suas respectivas mensagens-->
         <ion-item ng-repeat="mapas in mapas" class="item-text-wrap">
@@ -91,5 +91,6 @@
        Fim: {{pernoite.inicio}}
       </ion-item>
     </ion-list>
+    <button class="button button-dark button-block" ng-disabled="sincronizarF" ng-click="insere()">Sincronizar</button>
   
 </ion-view>
