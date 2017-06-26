@@ -7,6 +7,7 @@
   background-color: rgba(0, 0, 0, 60);
 }
 
+
 .menu-custom{
   width: 100%;
   margin: 0;
@@ -167,4 +168,14 @@
 .jornada-toogle{
   opacity: 1.5;
 
+}
+#home-tel{
+  text-align: center;
+  
+  font-size: 20px;
+}
+#home-desc{
+   text-align: center;
+  
+  font-size: 20px;
 }

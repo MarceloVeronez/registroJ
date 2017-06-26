@@ -8,7 +8,7 @@
     </ion-nav-bar>
     <ion-pane>
       <ion-content ng-controller="AppCtrl">
-      <button class="button button-dark button-block" ng-click="consultaMapaNovo()">Checar dados</button>
+      <button class="button button-dark button-block" ng-click="consultaMapaNovo()" id="botao-home">Checar dados</button>
       <ion-list>
       	<ion-item ng-repeat="mapas in mapas" class="item-text-wrap">
           Origem: {{ mapas.txtOrigem }}<br>

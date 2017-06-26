@@ -7,90 +7,93 @@
         <ion-nav-back-button class="button button-dark" style="text-decoration:none; color:white">Voltar</ion-nav-back-button>
     </ion-nav-bar>
      <div>
-      <ion-pane>
+      <ion-pane class="jornada-custom">
       <ion-content ng-controller="AppCtrl">
       <!--Botão para realizar a consulta-->
-      <a style="text-decoration:none"><button class="button button-dark button-block" ng-click="consultaMapas();">Consulta</button>
-  		<ion-list>
+      <a style="text-decoration:none"><button class="button button-dark button-block" ng-click="consultaMapas();" id="botao-home">Consulta</button>
+      <ion-list>
         <!--Itens da consula com suas respectivas mensagens-->
-        <ion-item ng-repeat="mapas in mapas" class="item-text-wrap">
+        <div class="card">
+      <div class="jornada-toogle">
+        <ion-item ng-repeat="mapas in mapas" class="item-text-wrap" id="bt">
           Origem: {{ mapas.txtOrigem }}<br>
          Destino: {{ mapas.txtDestino }}<br>
          Tempo de viagem: {{ mapas.tempo }}<br>
          Distância percorrida: {{ mapas.distancia }}<br>
          Horário de início: {{mapas.hora}}
          </ion-item>
-      <ion-item class="item-text-wrap" ng-repeat="id in itens">
+      <ion-item class="item-text-wrap" ng-repeat="id in itens" id="bt">
         {{id.direcao}}
       </ion-item>
-      <ion-item ng-repeat="direcao in direcao" class="item-text-wrap">
+      <ion-item ng-repeat="direcao in direcao" class="item-text-wrap" id="bt">
        Inicio: {{direcao.inicio}}<br>
        Fim: {{direcao.fim}}
       </ion-item>
-      <ion-item class="item-text-wrap" ng-repeat="id in itens2">
+      <ion-item class="item-text-wrap" ng-repeat="id in itens2" id="bt">
         {{id.refeicao}}
       </ion-item>
-      <ion-item ng-repeat="refeicao in refeicao" class="item-text-wrap">
+      <ion-item ng-repeat="refeicao in refeicao" class="item-text-wrap" id="bt">
        Inicio: {{refeicao.inicio}}<br>
        Fim: {{refeicao.fim}}
       </ion-item>
-      <ion-item class="item-text-wrap" ng-repeat="id in itens3">
+      <ion-item class="item-text-wrap" ng-repeat="id in itens3" id="bt">
         {{id.descanso}}
       </ion-item>
-      <ion-item ng-repeat="descanso in descanso" class="item-text-wrap">
+      <ion-item ng-repeat="descanso in descanso" class="item-text-wrap" id="bt">
        Inicio: {{descanso.inicio}}<br>
        Fim: {{descanso.fim}}
       </ion-item>
-      <ion-item class="item-text-wrap" ng-repeat="id in itens4">
+      <ion-item class="item-text-wrap" ng-repeat="id in itens4" id="bt">
         {{id.carga}}
       </ion-item>
-      <ion-item ng-repeat="carga in carga" class="item-text-wrap">
+      <ion-item ng-repeat="carga in carga" class="item-text-wrap" id="bt">
        Inicio: {{carga.inicio}}<br>
        Fim: {{carga.fim}}
       </ion-item>
-      <ion-item class="item-text-wrap" ng-repeat="id in itens5">
+      <ion-item class="item-text-wrap" ng-repeat="id in itens5" id="bt">
         {{id.descarga}}
       </ion-item>
-      <ion-item ng-repeat="descarga in descarga" class="item-text-wrap">
+      <ion-item ng-repeat="descarga in descarga" class="item-text-wrap" id="bt">
        Inicio: {{descarga.inicio}}<br>
        FIm: {{descarga.fim}}
       </ion-item>
-      <ion-item class="item-text-wrap" ng-repeat="id in itens6">
+      <ion-item class="item-text-wrap" ng-repeat="id in itens6" id="bt">
         {{id.abastecimento}}
       </ion-item>
-      <ion-item ng-repeat="abastecimento in abastecimento" class="item-text-wrap">
+      <ion-item ng-repeat="abastecimento in abastecimento" class="item-text-wrap" id="bt">
        Inicio: {{abastecimento.inicio}}<br>
        Fim: {{abastecimento.fim}}
       </ion-item>
-      <ion-item class="item-text-wrap" ng-repeat="id in itens7">
+      <ion-item class="item-text-wrap" ng-repeat="id in itens7" id="bt">
         {{id.tempoc}}
       </ion-item>
-      <ion-item ng-repeat="tempoc in tempoc" class="item-text-wrap">
+      <ion-item ng-repeat="tempoc in tempoc" class="item-text-wrap" id="bt">
        Inicio: {{tempoc.inicio}}<br>
        Fim {{tempoc.fim}}
       </ion-item>
-      <ion-item class="item-text-wrap" ng-repeat="id in itens8">
+      <ion-item class="item-text-wrap" ng-repeat="id in itens8" id="bt">
         {{id.fiscalizacao}}
       </ion-item>
-      <ion-item ng-repeat="fiscalizacao in fiscalizacao" class="item-text-wrap">
+      <ion-item ng-repeat="fiscalizacao in fiscalizacao" class="item-text-wrap" id="bt">
        Inicio: {{fiscalizacao.inicio}}<br>
        FIm{{fiscalizacao.fim}}
       </ion-item>
-      <ion-item class="item-text-wrap" ng-repeat="id in itens9">
+      <ion-item class="item-text-wrap" ng-repeat="id in itens9" id="bt">
         {{id.manutencao}}
       </ion-item>
-      <ion-item ng-repeat="manutencao in manutencao" class="item-text-wrap">
+      <ion-item ng-repeat="manutencao in manutencao" class="item-text-wrap" id="bt">
        Inicio: {{manutencao.inicio}}<br>
        Fim: {{manutencao.fim}}
       </ion-item>
-      <ion-item class="item-text-wrap" ng-repeat="id in itens10">
+      <ion-item class="item-text-wrap" ng-repeat="id in itens10" id="bt">
         {{id.pernoite}}
       </ion-item>
-      <ion-item ng-repeat="pernoite in pernoite" class="item-text-wrap">
+      <ion-item ng-repeat="pernoite in pernoite" class="item-text-wrap" id="bt">
        Inicio: {{pernoite.inicio}}<br>
        Fim: {{pernoite.inicio}}
       </ion-item>
+    </div>
+  </div>
     </ion-list>
-    <button class="button button-dark button-block" ng-disabled="sincronizarF" ng-click="insere()">Sincronizar</button>
-  
+        <button class="button button-dark button-block" ng-disabled="sincronizarF" ng-click="insere()" id="botao-home">Sincronizar</button>
 </ion-view>
